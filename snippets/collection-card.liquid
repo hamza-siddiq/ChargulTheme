@@ -54,11 +54,9 @@
 			</div>
 			<div class="collection-card__content">
 				<div>
-					<h2>{{ grid_collection_title }}</h2>
-					{% if collection_description %}
-						{% if grid_collection_description != '' %}
-						<p>{{ grid_collection_description }}</p>
-						{% endif %}
+					<h3 style="color:white">{{ grid_collection_title }}</h3>
+					{% if collection_description and grid_collection_description != blank%}
+						<p>{{ grid_collection_description | strip_html}}</p>
 					{% endif %}
 				</div>
 			</div>
