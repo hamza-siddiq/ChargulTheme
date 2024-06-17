@@ -21,7 +21,14 @@
 			<div class="announcement-bar--inner">
 				<div></div>
 				<div class="announcement-bar--text">
-					<p>{{ announcement_bar_text }}</p>
+    					{%- if template == 'index' -%}
+						<h1 style="color:white; font-style:normal; font-size:12px; font-weight:200;
+Line-height:1.7;
+text-rendering: optimizeLegibility; font-family:Chivo,sans-serif;margin-bottom:0px;letter-spacing: .15em;">{{ announcement_bar_text }}</h1>
+					{%- else -%}
+						<p>{{ announcement_bar_text }}</p>
+					{%- endif -%}
+
 					{%- if announcement_bar_link != blank -%}
 					<a href="{{ announcement_bar_link | escape }}" class="announcement-bar--link" aria-label="{{ announcement_bar_text | escape }}"></a>
 					{%- endif -%}
