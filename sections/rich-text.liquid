@@ -25,7 +25,7 @@
 				{%- when 'subheading' -%}
 					<p class="subheading" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
 				{%- when 'heading' -%}
-					<h3 class="{{ block.settings.size }}" {{ block.shopify_attributes }}>{{ block.settings.text | newline_to_br }}</h3>
+					<h2 class="{{ block.settings.size }}" {{ block.shopify_attributes }}>{{ block.settings.text | newline_to_br }}</h2>
 				{%- when 'text' -%}
 					<div class="rte {{ block.settings.size }}" {{ block.shopify_attributes }}>
 						{{ block.settings.text }}
@@ -181,7 +181,7 @@
 		            "label": "Small"
 		          }
 		        ],
-		        "default": "h3"
+		        "default": "h2"
 		      }
 				]
 			},
