@@ -162,10 +162,6 @@ if (!customElements.get('slide-show')) {
     prepareAnimations(slideshow, animations) {
       if (!slideshow.dataset.animationsReady) {
         document.fonts.ready.then(function () {
-          new SplitText(slideshow.querySelectorAll('h1, p:not(.subheading)'), {
-            type: 'lines, words',
-            linesClass: 'line-child'
-          });
           slideshow.querySelectorAll('.slideshow__slide').forEach((item, i) => {
             let tl = gsap.timeline({
               paused: true
@@ -201,17 +197,14 @@ if (!customElements.get('slide-show')) {
                 }, 0);
               button_offset += h1_duration;
             }
-            if (item.querySelector('p:not(.subheading)')) {
-
-              let p_duration = 0.5 + ((item.querySelectorAll('p:not(.subheading) .line-child div').length - 1) * 0.02);
-              tl
-                .from(item.querySelectorAll('p:not(.subheading) .line-child div'), {
-                  duration: p_duration,
-                  yPercent: '100',
-                  stagger: 0.02
-                }, 0);
-              button_offset += p_duration;
-            }
+if (item.querySelector('p:not(.subheading)')) {
+  tl.from(item.querySelector('p:not(.subheading)'), {
+    duration: 0.5,
+    opacity: 0,
+    y: '20px'
+  }, 0);
+  button_offset += 0.5;
+}
             if (item.querySelectorAll('.button')) {
               tl
                 .fromTo(item.querySelectorAll('.button'), {
