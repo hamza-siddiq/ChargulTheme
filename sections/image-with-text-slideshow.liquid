@@ -48,13 +48,13 @@
 				{% for block in section.blocks %}
 					<div class="image-with-text-slideshow__content-content carousel__slide {{ desktop_height }}" {{ block.shopify_attributes }}>
 						{% if block.settings.heading %}
-							<h3>{{ block.settings.heading | newline_to_br }}</h3>
+							<h2 class="h3">{{ block.settings.heading | newline_to_br }}</h2>
 						{% endif %}
 						{% if block.settings.content %}
 						<p>{{ block.settings.content | newline_to_br }}</p>
 						{% endif %}
 						{% if block.settings.button_text != blank %}
-							<a class="text-button" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}">{{ block.settings.button_text }}</a>
+							<a class="button black medium" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}">{{ block.settings.button_text }}</a>
 		        {% endif %}
 					</div>
 				{% endfor %}
