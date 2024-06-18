@@ -1,1 +1,40 @@
-{"type":"header","name":"Header group","sections":{"announcement-bar":{"type":"announcement-bar","custom_css":["div {font-size: 12px;}"],"settings":{"announcement_bar":true,"announcement_bar_homepage_only":false,"announcement_bar_text":"Afghan Rugs - Authentic, Hand-Knotted, 100% Wool","announcement_bar_link":"","show_language_switcher":false,"show_currency_switcher":true}},"header":{"type":"header","settings":{"logo":"shopify:\/\/shop_images\/logo-3.png","logo_height_range":40,"logo_height_range_mobile":30,"style":"style1","header_shadow":"header--shadow-none","menu":"main-menu","mobile_secondary_menu":"","show_language_switcher":true,"show_currency_switcher":true,"predictive_search_enabled":true,"search_menu":""}}},"order":["announcement-bar","header"]}
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "custom_css": [
+        "div {font-size: 12px;}"
+      ],
+      "settings": {
+        "announcement_bar": true,
+        "announcement_bar_homepage_only": false,
+        "announcement_bar_text": "Afghan Rugs - Authentic, Hand-Knotted, Pure Wool",
+        "announcement_bar_link": "",
+        "show_language_switcher": false,
+        "show_currency_switcher": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo": "shopify:\/\/shop_images\/logo-3.png",
+        "logo_height_range": 40,
+        "logo_height_range_mobile": 30,
+        "style": "style1",
+        "header_shadow": "header--shadow-none",
+        "menu": "main-menu",
+        "mobile_secondary_menu": "",
+        "show_language_switcher": true,
+        "show_currency_switcher": true,
+        "predictive_search_enabled": true,
+        "search_menu": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

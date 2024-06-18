@@ -1,1 +1,130 @@
-{"sections":{"breadcrumbs":{"type":"breadcrumbs","settings":{}},"template-header":{"type":"template-header","settings":{"full_width":true,"overlay_opacity":30,"show_subcollections":true,"display_description":false}},"product-grid":{"type":"main-collection-product-grid","settings":{"products_per_page":12,"columns_desktop":4,"pagination_type":"infinite","full_width":false,"enable_filtering":true,"enable_sorting":true,"show_counts":true,"filter_color_swatches":true}},"collapsible_content_rLff7d":{"type":"collapsible-content","blocks":{"collapsible_tab_C7amxF":{"type":"collapsible_tab","settings":{"heading":"WHAT'S SO SPECIAL ABOUT AFGHAN RUGS?","open":false,"content":"<p>Afghan rugs are celebrated worldwide for their:<\/p><ul><li><strong>Timeless Designs:<\/strong><em> <\/em>Mesmerizing patterns and motifs combining ancient geometric shapes and stylized elements.<\/li><li><strong>Finest Materials:<\/strong><em> <\/em>Crafted from hand-spun, premium-quality wool renowned for softness and vibrant, long-lasting colors.<\/li><li><strong>Enduring Quality:<\/strong><em> <\/em>Meticulous construction and superior materials ensure they withstand time, remaining cherished heirlooms.<\/li><li><strong>Ethical and Sustainable:<\/strong><em> <\/em>Supporting skilled artisans, preserving cultural heritage, and sustaining local communities.<\/li><\/ul>","page":""}},"collapsible_tab_jnQP86":{"type":"collapsible_tab","settings":{"heading":"Do you offer custom sizes or designs for Afghan rugs?","open":false,"content":"<p>We can bring your specific size or design vision to life!<\/p><ul><li><strong>Personalized Consultation:<\/strong><em> <\/em>We'll work with you from design selection to finalizing dimensions and colors.<\/li><li><strong>Handcrafted Quality:<\/strong><em> <\/em>Custom orders may require additional time, as each rug is meticulously handcrafted to your specifications.<\/li><\/ul>","page":""}},"collapsible_tab_m3NRKH":{"type":"collapsible_tab","settings":{"heading":"Why buy from Chargul?","open":false,"content":"<p>When you purchase an Afghan rug from Chargul, you can expect:<\/p><ul><li><strong>Ethical Sourcing:<\/strong><em> <\/em>We source directly from Afghan weavers, ensuring fair compensation and supporting local communities.<\/li><li><strong>High-Quality Materials: <\/strong>Our rugs are made from premium wool and natural dyes for durability and vibrant colors.<\/li><li><strong>Authenticity:<\/strong><em> <\/em>Each hand-knotted rug is a genuine piece of Afghan heritage, crafted by skilled artisans.<\/li><li><strong>Wide Selection:<\/strong><em> <\/em>Choose from a diverse range of designs, sizes, and colors to suit your taste and decor.<\/li><li><strong>Customer Support:<\/strong><em> <\/em>Our dedicated team is always ready to assist you, ensuring a smooth shopping experience.<\/li><\/ul>","page":""}},"collapsible_tab_n8zGA6":{"type":"collapsible_tab","settings":{"heading":"What is your shipping policy?","open":false,"content":"<ul><li><strong>Shipping Time:<\/strong><em> <\/em>Within the US, expect your rug to arrive in 3-5 business days. International orders may take 1-3 weeks.<\/li><li><strong>Shipping Costs: <\/strong>Enjoy free shipping on all orders within the United States.<\/li><li><strong>Order Tracking:<\/strong><em> <\/em>We provide a tracking number via email, allowing you to monitor your shipment's progress.<\/li><\/ul>","page":""}},"collapsible_tab_xca8QV":{"type":"collapsible_tab","settings":{"heading":"What is your return and exchange policy?","open":false,"content":"<ul><li><strong>Returns:<\/strong><em> <\/em>We offer a 30-day return policy for a full refund, provided the item is in its original condition.<\/li><li><strong>Refunds:<\/strong><em> <\/em>Once we receive the returned rug, we process refunds within 5 business days.<\/li><li><strong>Exchanges:<\/strong> Take advantage of our 30-day exchange policy if you prefer a different rug.<\/li><\/ul>","page":""}},"collapsible_tab_UWzbzH":{"type":"collapsible_tab","settings":{"heading":"Explore More","open":false,"content":"<p><strong>Discover Our Hand Knotted Afghan Rugs:<\/strong><br\/>Immerse yourself in our exquisite collection of hand-knotted Afghan rugs, available in a variety of sizes to suit any space:<\/p><ul><li><a href=\"\/collections\/small-afghan-rugs\" title=\"Small Afghan Rugs\">Small Afghan Rugs<\/a><\/li><li><a href=\"\/collections\/medium-afghan-rugs\" title=\"Medium Afghan Rugs\">Medium Afghan Rugs<\/a><\/li><li><a href=\"\/collections\/large-afghan-rugs\" title=\"Large Afghan Rugs\">Large Afghan Rugs<\/a><\/li><li><a href=\"\/collections\/x-large-afghan-rugs\" title=\"X-Large Afghan Rugs\">X-Large Afghan Rugs<\/a><\/li><\/ul><p><strong>Learn About the History and Artistry of Afghan Rugs:<\/strong><br\/>Delve into the rich history and intricate artistry of Afghan rugs on our <a href=\"\/blogs\/blog-posts\" title=\"Chargul Blog Posts - Expert Insights on Hand Knotted Wool Rugs\">blog<\/a>.<br\/><strong>Learn About Our Story:<\/strong><br\/>Discover our journey and commitment to preserving Afghan craftsmanship on our <a href=\"\/pages\/about-us\" title=\"Our Story\">Our Story<\/a> page.<br\/><strong>Contact Us for Personalized Assistance:<\/strong><br\/><a href=\"\/pages\/contact\" title=\"Contact\">Contact us<\/a> for personalized assistance in selecting the ideal rug for your home.<\/p>","page":""}}},"block_order":["collapsible_tab_C7amxF","collapsible_tab_jnQP86","collapsible_tab_m3NRKH","collapsible_tab_n8zGA6","collapsible_tab_xca8QV","collapsible_tab_UWzbzH"],"settings":{"heading":"Shopping Information","description":"<p>Specific questions about our collection of Afghan rugs<\/p>","disable_top_spacing":true,"disable_bottom_spacing":true}},"featured_blog_ewVyAB":{"type":"featured-blog","settings":{"heading":"Blog Posts","description":"<p>Learn more about the art of Afghan Rugs<\/p>","blog":"blog-posts","post_limit":3,"columns_desktop":3,"mobile_swipe":true,"image_ratio":"square","show_image":true,"use_shapes":true,"show_date":true,"show_excerpt":true,"show_view_all":true,"button_outline":false,"disable_top_spacing":false,"disable_bottom_spacing":false}}},"order":["breadcrumbs","template-header","product-grid","collapsible_content_rLff7d","featured_blog_ewVyAB"]}
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "template-header": {
+      "type": "template-header",
+      "settings": {
+        "full_width": true,
+        "overlay_opacity": 30,
+        "show_subcollections": true,
+        "display_description": false
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 4,
+        "pagination_type": "infinite",
+        "full_width": false,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "show_counts": true,
+        "filter_color_swatches": true
+      }
+    },
+    "collapsible_content_rLff7d": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_tab_C7amxF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "WHAT'S SO SPECIAL ABOUT AFGHAN RUGS?",
+            "open": false,
+            "content": "<p>Afghan rugs are celebrated worldwide for their:<\/p><ul><li><strong>Timeless Designs:<\/strong><em> <\/em>Mesmerizing patterns and motifs combining ancient geometric shapes and stylized elements.<\/li><li><strong>Finest Materials:<\/strong><em> <\/em>Crafted from hand-spun, premium-quality wool renowned for softness and vibrant, long-lasting colors.<\/li><li><strong>Enduring Quality:<\/strong><em> <\/em>Meticulous construction and superior materials ensure they withstand time, remaining cherished heirlooms.<\/li><li><strong>Ethical and Sustainable:<\/strong><em> <\/em>Supporting skilled artisans, preserving cultural heritage, and sustaining local communities.<\/li><\/ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_jnQP86": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Do you offer custom sizes or designs for Afghan rugs?",
+            "open": false,
+            "content": "<p>We can bring your specific size or design vision to life!<\/p><ul><li><strong>Personalized Consultation:<\/strong><em> <\/em>We'll work with you from design selection to finalizing dimensions and colors.<\/li><li><strong>Handcrafted Quality:<\/strong><em> <\/em>Custom orders may require additional time, as each rug is meticulously handcrafted to your specifications.<\/li><\/ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_m3NRKH": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Why buy from Chargul?",
+            "open": false,
+            "content": "<p>When you purchase an Afghan rug from Chargul, you can expect:<\/p><ul><li><strong>Ethical Sourcing:<\/strong><em> <\/em>We source directly from Afghan weavers, ensuring fair compensation and supporting local communities.<\/li><li><strong>High-Quality Materials: <\/strong>Our rugs are made from premium wool and natural dyes for durability and vibrant colors.<\/li><li><strong>Authenticity:<\/strong><em> <\/em>Each hand-knotted rug is a genuine piece of Afghan heritage, crafted by skilled artisans.<\/li><li><strong>Wide Selection:<\/strong><em> <\/em>Choose from a diverse range of designs, sizes, and colors to suit your taste and decor.<\/li><li><strong>Customer Support:<\/strong><em> <\/em>Our dedicated team is always ready to assist you, ensuring a smooth shopping experience.<\/li><\/ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_n8zGA6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What is your shipping policy?",
+            "open": false,
+            "content": "<ul><li><strong>Shipping Time:<\/strong><em> <\/em>Within the US, expect your rug to arrive in 3-5 business days. International orders may take 1-3 weeks.<\/li><li><strong>Shipping Costs: <\/strong>Enjoy free shipping on all orders within the United States.<\/li><li><strong>Order Tracking:<\/strong><em> <\/em>We provide a tracking number via email, allowing you to monitor your shipment's progress.<\/li><\/ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_xca8QV": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What is your return and exchange policy?",
+            "open": false,
+            "content": "<ul><li><strong>Returns:<\/strong><em> <\/em>We offer a 30-day return policy for a full refund, provided the item is in its original condition.<\/li><li><strong>Refunds:<\/strong><em> <\/em>Once we receive the returned rug, we process refunds within 5 business days.<\/li><li><strong>Exchanges:<\/strong> Take advantage of our 30-day exchange policy if you prefer a different rug.<\/li><\/ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_UWzbzH": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Explore More",
+            "open": false,
+            "content": "<p><strong>Discover Our Hand Knotted Afghan Rugs: <\/strong>Immerse yourself in our exquisite collection of hand-knotted Afghan rugs, available in a variety of sizes to suit any space:<\/p><ul><li><a href=\"\/collections\/small-afghan-rugs\" title=\"Small Afghan Rugs\">Small Afghan Rugs<\/a><\/li><li><a href=\"\/collections\/medium-afghan-rugs\" title=\"Medium Afghan Rugs\">Medium Afghan Rugs<\/a><\/li><li><a href=\"\/collections\/large-afghan-rugs\" title=\"Large Afghan Rugs\">Large Afghan Rugs<\/a><\/li><li><a href=\"\/collections\/x-large-afghan-rugs\" title=\"X-Large Afghan Rugs\">X-Large Afghan Rugs<\/a><\/li><\/ul><p><strong>Learn About the History and Artistry of Afghan Rugs: <\/strong>Delve into the rich history and intricate artistry of Afghan rugs on our <a href=\"\/blogs\/blog-posts\" title=\"Chargul Blog Posts - Expert Insights on Hand Knotted Wool Rugs\">blog<\/a>.<br\/><strong>Learn About Our Story: <\/strong>Discover our journey and commitment to preserving Afghan craftsmanship on our <a href=\"\/pages\/about-us\" title=\"Our Story\">Our Story<\/a> page.<br\/><strong>FAQ: <\/strong>Head over to the <a href=\"\/pages\/faq\" title=\"FAQ\">FAQ<\/a> section for answers to our most asked questions<br\/><strong>Contact Us for Personalized Assistance: <\/strong><a href=\"\/pages\/contact\" title=\"Contact\">Contact us<\/a> for personalized assistance in selecting the ideal rug for your home.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_C7amxF",
+        "collapsible_tab_jnQP86",
+        "collapsible_tab_m3NRKH",
+        "collapsible_tab_n8zGA6",
+        "collapsible_tab_xca8QV",
+        "collapsible_tab_UWzbzH"
+      ],
+      "settings": {
+        "heading": "Shopping Information",
+        "description": "<p>Specific questions about our collection of Afghan rugs<\/p>",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "featured_blog_ewVyAB": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Blog Posts",
+        "description": "<p>Learn more about the art of Afghan Rugs<\/p>",
+        "blog": "blog-posts",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "mobile_swipe": true,
+        "image_ratio": "square",
+        "show_image": true,
+        "use_shapes": true,
+        "show_date": true,
+        "show_excerpt": true,
+        "show_view_all": true,
+        "button_outline": false,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "template-header",
+    "product-grid",
+    "collapsible_content_rLff7d",
+    "featured_blog_ewVyAB"
+  ]
+}
