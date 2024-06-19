@@ -145,6 +145,11 @@
           "button_vertical_position": "lowest",
           "greeting_message": "👋 Hi, message us with any questions. We're happy to help!"
         }
+      },
+      "11877319286961345690": {
+        "type": "shopify:\/\/apps\/doc-404-broken-links-repair\/blocks\/404-fix-broken-links-widget\/f4f2d416-cb00-4540-bda9-816d588bad3e",
+        "disabled": false,
+        "settings": {}
       }
     }
   },

@@ -1,1 +1,56 @@
-{"sections":{"breadcrumbs":{"type":"breadcrumbs","settings":{}},"template-header":{"type":"template-header","settings":{"full_width":true,"overlay_opacity":30,"show_subcollections":true,"display_description":false,"bg_image":"shopify:\/\/shop_images\/all-rugs_54de170a-049c-4e29-94a5-a024af6397f0.jpg"}},"product-grid":{"type":"main-collection-product-grid","settings":{"products_per_page":12,"columns_desktop":4,"pagination_type":"infinite","full_width":false,"enable_filtering":true,"enable_sorting":true,"show_counts":true,"filter_color_swatches":true}},"featured_blog_ewVyAB":{"type":"featured-blog","settings":{"heading":"Blog Posts","description":"","blog":"blog-posts","post_limit":3,"columns_desktop":3,"mobile_swipe":true,"image_ratio":"square","show_image":true,"use_shapes":true,"show_date":true,"show_excerpt":true,"show_view_all":true,"button_outline":false,"disable_top_spacing":false,"disable_bottom_spacing":false}}},"order":["breadcrumbs","template-header","product-grid","featured_blog_ewVyAB"]}
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "template-header": {
+      "type": "template-header",
+      "settings": {
+        "full_width": true,
+        "overlay_opacity": 30,
+        "show_subcollections": true,
+        "display_description": false
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 4,
+        "pagination_type": "paginated",
+        "full_width": false,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "show_counts": true,
+        "filter_color_swatches": true
+      }
+    },
+    "featured_blog_ewVyAB": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Blog Posts",
+        "description": "",
+        "blog": "blog-posts",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "mobile_swipe": true,
+        "image_ratio": "square",
+        "show_image": true,
+        "use_shapes": true,
+        "show_date": true,
+        "show_excerpt": true,
+        "show_view_all": true,
+        "button_outline": false,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "template-header",
+    "product-grid",
+    "featured_blog_ewVyAB"
+  ]
+}
