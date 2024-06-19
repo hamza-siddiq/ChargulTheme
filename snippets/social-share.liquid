@@ -12,4 +12,4 @@
   <a href="http://pinterest.com/pin/create/link/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | image_url: width: 1024, height: 1024 }}&amp;description={{ share_title | url_param_escape }}" class="pinterest social" data-pin-no-hover="true">{% render 'svg-icons' with 'pinterest' %} {{ 'social.alt_text.share_on_pinterest' | t }}</a>
   {% endif %}
 </aside>
-<script src="{{ 'social-share.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'social-share.js' | asset_url }}" defer="defer"></script>
