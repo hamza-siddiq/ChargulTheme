@@ -381,7 +381,7 @@
         "template--16769565360425__601e1230-8225-43a6-b2f4-ea68c68ae03c-166911156022fa622d-1": {
           "type": "heading",
           "settings": {
-            "text": "Discover the Enchantment of an Afghan Rug",
+            "text": "The Enchantment of an Afghan Rug",
             "heading_size": "h3"
           }
         },
@@ -415,7 +415,7 @@
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
-        "heading": "You may also like",
+        "heading": "Discover Curated Rugs",
         "mobile_swipe": true,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false

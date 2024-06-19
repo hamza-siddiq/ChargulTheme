@@ -213,10 +213,10 @@
         "collection_Tm8rnw"
       ],
       "settings": {
-        "heading": "New Arrivals",
-        "description": "<p>Check out the latest items from Chargul<\/p>",
+        "heading": "Newly Curated Rugs",
+        "description": "<p>Discover the latest additions to our exquisite Afghan rug gallery<\/p>",
         "full_width": false,
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     }

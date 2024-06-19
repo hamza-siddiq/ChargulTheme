@@ -28,10 +28,6 @@
         "share": {
           "type": "share",
           "settings": {}
-        },
-        "recommendations_ErQG9y": {
-          "type": "recommendations",
-          "settings": {}
         }
       },
       "block_order": [
@@ -39,18 +35,45 @@
         "featured_image",
         "content",
         "tags",
-        "share",
-        "recommendations_ErQG9y"
+        "share"
       ],
       "settings": {
         "article_show_date": true,
         "article_show_author": true,
         "article_show_nav": true
       }
+    },
+    "featured_collection_4bpKAi": {
+      "type": "featured-collection",
+      "blocks": {
+        "collection_UKCgyd": {
+          "type": "collection",
+          "settings": {
+            "collection": "afghan-rugs",
+            "display_type": "carousel",
+            "product_limit": 12,
+            "columns_desktop": 4,
+            "show_view_all": true,
+            "button_outline": false,
+            "mobile_swipe": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_UKCgyd"
+      ],
+      "settings": {
+        "heading": "Newly Curated Rugs",
+        "description": "<p>Discover the latest additions to our exquisite Afghan rug gallery<\/p>",
+        "full_width": false,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
     "breadcrumbs",
-    "main-article"
+    "main-article",
+    "featured_collection_4bpKAi"
   ]
 }
