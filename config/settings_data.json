@@ -29,6 +29,7 @@
     "social_instagram_link": "https:\/\/www.instagram.com\/chargul\/",
     "social_youtube_link": "",
     "product_aspect_ratio": "adapt",
+    "products_hover_image": false,
     "enable_quick_add": false,
     "enable_quick_view": false,
     "show_products_vendor": true,

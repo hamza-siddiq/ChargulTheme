@@ -5,7 +5,7 @@ if (!customElements.get('variant-selects')) {
    *  @function VariantSelects
    */
   class VariantSelects extends HTMLElement {
-    constructor() {
+    constructor() { 
       super();
       this.isDisabledFeature = this.dataset.isDisabled;
       this.updateUrl = this.dataset.updateUrl === 'true';
