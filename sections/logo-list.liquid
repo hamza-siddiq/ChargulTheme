@@ -10,7 +10,7 @@
 	<div class="logo-list__inner" style="--logo-columns: {{ section.settings.columns }}">
 		{% for block in section.blocks %}
 	    <div class="logo-list__logo" {{ block.shopify_attributes }}>
-	      {% if block.settings.link %}<a href="{{ block.settings.link | escape }}" target="_blank">{% endif %}
+	      {% if block.settings.link %}<a href="{{ block.settings.link | escape }}" target="_blank" rel="noopener noreferrer">{% endif %}
 	        {% if block.settings.image %}
 	          {% assign image = block.settings.image %}
 						{% assign master_width = image.src.width | append: 'x' | append: image.src.height %}

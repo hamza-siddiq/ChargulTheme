@@ -72,7 +72,7 @@
 									<div class="product-cart-item-options">
 										<span>{{ property.first }}: </span>
 											{%- if property.last contains '/uploads/' -%}
-												<a href="{{ property.last }}" class="link" target="_blank">
+												<a href="{{ property.last }}" class="link" target="_blank" rel="noopener noreferrer">
 													{{ property.last | split: '/' | last }}
 												</a>
 											{%- else -%}
