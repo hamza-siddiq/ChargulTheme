@@ -10,6 +10,7 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ dir }}">
 <head>
 	<meta charset="utf-8">
+	<meta name="referrer" content="strict-origin-when-cross-origin">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 	<meta name="theme-color" content="{{ settings.color_body_bg }}">
@@ -18,16 +19,16 @@
 	<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 	{% render 'head-preload' %}
 	{%- if request.path == '/collections/vendors' -%}
-		<meta name="robots" content="noindex">
+		<meta name="robots" content="noindex nofollow">
 	{%- endif -%}
 	{%- if request.path == '/collections/all' -%}
-		<meta name="robots" content="noindex">
+		<meta name="robots" content="noindex nofollow">
 	{%- endif -%}
 	{% if settings.favicon != blank -%}
 		<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
 	{%- endif %}
 	<title>
-		{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} - {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} - Page {{ current_page }}{% else %}{% unless page_title contains shop.name or page_title contains 'ft' %} | {{ shop.name }}{% endunless %}{% endif %}
+		{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} - {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} - Page {{ current_page }}{% else %}{% unless page_title contains shop.name or page_title contains ' x ' %} | {{ shop.name }}{% endunless %}{% endif %}
 	</title>
 
 	{% if page_description %}
