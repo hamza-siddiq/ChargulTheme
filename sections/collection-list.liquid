@@ -21,6 +21,7 @@
 		assign carousel_class = 'carousel'
 	endif
 -%}
+{{- 'list-collections.css' | asset_url | stylesheet_tag: preload:true -}}
 <div class="list-collections section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
 	{% render 'section-header', section_heading: section_heading, section_description: section_description %}
 	<div class="row {{ content_alignment }}" style="--var-collection-list-columns:{{ columns_desktop }}">
@@ -39,7 +40,6 @@
 		</div>
 	</div>
 </div>
-{{- 'list-collections.css' | asset_url | stylesheet_tag -}}
 {% schema %}
   {
     "name": "Collection list",

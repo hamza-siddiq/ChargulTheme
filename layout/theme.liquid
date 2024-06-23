@@ -26,7 +26,7 @@
 	{%- unless settings.heading_font.system? and settings.body_font.system? -%}
 		<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
 	{%- endunless -%}
-	{{ 'app.css' | asset_url | stylesheet_tag }}
+	{{ 'app.css' | asset_url | stylesheet_tag: preload: true }}
 
 	<title>
 		{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} - {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} - Page {{ current_page }}{% else %}{% unless page_title contains shop.name or page_title contains ' x ' %} | {{ shop.name }}{% endunless %}{% endif %}
@@ -108,7 +108,7 @@
 	{% if settings.enable_quick_view or settings.enable_quick_add %}
 		{{ 'product.js' | asset_url | script_tag }}
 	{% endif %}
-	{{ 'slideshow.js' | asset_url | script_tag }}
+	{{ 'slideshow.js' | asset_url | script_tag  }}
 	{{ 'app.js' | asset_url | script_tag }}
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>

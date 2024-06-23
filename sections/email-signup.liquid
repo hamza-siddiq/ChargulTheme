@@ -1,4 +1,4 @@
-{{- 'email-signup.css' | asset_url | stylesheet_tag -}}
+{{- 'email-signup.css' | asset_url | stylesheet_tag: preload: true -}}
 {%- liquid
 	assign section_heading = section.settings.heading
 	assign section_description = section.settings.description

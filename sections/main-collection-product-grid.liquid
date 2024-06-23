@@ -1,5 +1,3 @@
-{{- 'product-grid.css' | asset_url | stylesheet_tag -}}
-{{- 'facets.css' | asset_url | stylesheet_tag -}}
 {%- liquid
 	assign full_width = section.settings.full_width
 	assign enable_filtering = section.settings.enable_filtering
@@ -10,6 +8,8 @@
 	assign products_per_page = section.settings.products_per_page
 	assign columns_desktop = section.settings.columns_desktop
 -%}
+{{- 'product-grid.css' | asset_url | stylesheet_tag: preload: true -}}
+{{- 'facets.css' | asset_url | stylesheet_tag: preload: true -}}
 {%- paginate collection.products by products_per_page -%}
 	<div class="collection-container section-spacing-bottom collection-container--full-width-{{ full_width }}">
 		{% render 'facets', results: collection, enable_filtering: enable_filtering, enable_sorting: enable_sorting, show_counts: show_counts, filter_color_swatches: filter_color_swatches %}
@@ -42,10 +42,10 @@
 	</div>
 {%- endpaginate -%}
 {%- if enable_filtering or enable_sorting -%}
-{%- if enable_filtering  -%}
-{{ 'nouislider.js' | asset_url | script_tag }}
-{%- endif -%}
-<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+	{%- if enable_filtering  -%}
+		{{ 'nouislider.js' | asset_url | script_tag }}
+	{%- endif -%}
+	<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 {% schema %}
   {

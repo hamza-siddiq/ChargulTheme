@@ -13,4 +13,4 @@
   {%- endfor -%}
 {%- endcapture -%}
 {%- assign l = srcset | size | minus: 1 -%}
-<link rel="preload" as="image" href="{{- image.src | img_url: small_size, crop: 'center' -}}" imagesrcset="{{ srcset | slice: 0, l | strip_newlines }}" imagesizes="auto">
+<link preload as="image" href="{{- image.src | img_url: small_size, crop: 'center' -}}" imagesrcset="{{ srcset | slice: 0, l | strip_newlines }}" imagesizes="auto">

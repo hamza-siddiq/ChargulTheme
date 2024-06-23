@@ -1,5 +1,3 @@
-{{ 'testimonials.css' | asset_url | stylesheet_tag }}
-
 {%- liquid
 	assign section_heading = section.settings.heading
 	assign section_description = section.settings.description
@@ -14,6 +12,7 @@
 		assign autoplay = section.settings.autoplay_length | times: 1000
 	endif
 -%}
+{{ 'testimonials.css' | asset_url | stylesheet_tag: preload: true }}
 <div class="testimonials section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }};--color-text:{{ color_text }}">
 	{% render 'section-header', section_heading: section_heading, section_description: section_description %}
 	<div class="testimonials__inner text-{{ size }}">

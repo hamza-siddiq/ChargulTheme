@@ -1,4 +1,3 @@
-{{- 'slideshow.css' | asset_url | stylesheet_tag -}}
 {%- liquid
 	assign desktop_height = section.settings.desktop_height
 	assign mobile_height = section.settings.mobile_height
@@ -41,6 +40,7 @@
 		assign preload = true
 	endif
 -%}
+{{- 'slideshow.css' | asset_url | stylesheet_tag: preload: true -}}
 <div class="row{% if full_width %} full-width-row{% endif %}">
 	<div class="small-12 columns">
 		<slide-show class="slideshow main-slideshow carousel text-{{ text_alignment }} content-size-{{ content_size }} {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" data-dots="{{ dots }}" data-autoplay="{{ autoplay }}" data-fade="{{ fade }}" style="--overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">

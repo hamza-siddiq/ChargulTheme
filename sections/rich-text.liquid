@@ -1,4 +1,3 @@
-{{ 'rich-text.css' | asset_url | stylesheet_tag }}
 {% liquid
 	assign text_width = section.settings.text_width
 	assign text_position = section.settings.text_position
@@ -6,6 +5,7 @@
 	assign disable_top_spacing = section.settings.disable_top_spacing
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 %}
+{{ 'rich-text.css' | asset_url | stylesheet_tag: preload: true }}
 <div class="rich-text text-{{ text_alignment }} text-position-{{ text_position }} text-width-{{ text_width }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
 	<div class="rich-text__inner">
 		{% for block in section.blocks %}

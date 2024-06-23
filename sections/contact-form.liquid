@@ -6,7 +6,7 @@
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 	assign text_blocks = section.blocks | where: "type", "text"
 -%}
-{{ 'contact-form.css' | asset_url | stylesheet_tag }}
+{{ 'contact-form.css' | asset_url | stylesheet_tag: preload: true }}
 <div class="contact-form section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}{% if text_blocks.size < 1 %} contact-form--center{% endif -%}">
 	<div class="row">
 		<div class="small-12 columns">

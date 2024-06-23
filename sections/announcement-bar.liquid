@@ -10,7 +10,7 @@
 		endif
 	-%}
 	{% if show_announcement_bar %}
-		{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
+		{{ 'announcement-bar.css' | asset_url | stylesheet_tag: preload: true }}
 		{% liquid
 			assign show_language_switcher = section.settings.show_language_switcher
 			assign show_currency_switcher = section.settings.show_currency_switcher

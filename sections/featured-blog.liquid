@@ -22,6 +22,7 @@
 			assign columns_class = 'medium-6 large-3'
 	endcase
 %}
+{{ 'blog.css' | asset_url | stylesheet_tag: preload: true }}
 <div class="blog-posts{% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
 	{% render 'section-header', section_heading: section_heading, section_description: section_description %}
 	<div class="row large-spacing">
@@ -46,7 +47,6 @@
     </div>
   {%- endif -%}
 </div>
-{{ 'blog.css' | asset_url | stylesheet_tag }}
 {% schema %}
   {
     "name": "Blog posts",

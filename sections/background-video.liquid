@@ -1,4 +1,4 @@
-{{ 'background-video.css' | asset_url | stylesheet_tag }}
+{{ 'background-video.css' | asset_url | stylesheet_tag: preload:true }}
 {%- liquid
   assign desktop_height = section.settings.desktop_height
   assign mobile_height = section.settings.mobile_height

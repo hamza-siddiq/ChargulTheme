@@ -1,4 +1,4 @@
-{{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+{{ 'collapsible-content.css' | asset_url | stylesheet_tag: preload:true }}
 
 {% liquid
   assign section_heading = section.settings.heading

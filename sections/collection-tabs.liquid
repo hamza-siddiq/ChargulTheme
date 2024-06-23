@@ -1,5 +1,5 @@
-{{- 'product-grid.css' | asset_url | stylesheet_tag -}}
-{{- 'collection-tabs.css' | asset_url | stylesheet_tag -}}
+{{- 'product-grid.css' | asset_url | stylesheet_tag: preload: true -}}
+{{- 'collection-tabs.css' | asset_url | stylesheet_tag: preload: true -}}
 {%- liquid
 	assign section_heading = section.settings.heading
 	assign section_description = section.settings.description

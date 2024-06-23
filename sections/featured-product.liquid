@@ -18,7 +18,7 @@
 		assign sizes = sizes | append: ',1600x'
 	endif
 %}
-{{ 'featured-product.css' | asset_url | stylesheet_tag }}
+{{ 'featured-product.css' | asset_url | stylesheet_tag: preload: true }}
 {%- if first_3d_model -%}
   <link id="ModelViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
   <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'product-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -69,8 +69,8 @@
   </div>
 </div>
 {%- if section.settings.lightbox != blank -%}
-{% render 'photoswipe' %}
-<link rel="stylesheet" href="{{ 'photoswipe.css' | asset_url }}" media="print" onload="this.media='all'">
+  {% render 'photoswipe' %}
+  <link rel="stylesheet" href="{{ 'photoswipe.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 <script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
 

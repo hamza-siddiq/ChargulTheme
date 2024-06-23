@@ -1,4 +1,3 @@
-{{- 'image-with-text-slideshow.css' | asset_url | stylesheet_tag -}}
 {%- liquid
 	assign mobile_height = section.settings.mobile_height
 	assign content_position = section.settings.content_position
@@ -23,6 +22,7 @@
 		assign image_carousel_class = 'adapt-to-content'
 	endif
 -%}
+{{- 'image-with-text-slideshow.css' | asset_url | stylesheet_tag: preload: true -}}
 <div class="row{% if full_width %} full-width-row-full{% endif %}">
 	<div class="small-12 columns">
 		<div class="image-with-text-slideshow grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">

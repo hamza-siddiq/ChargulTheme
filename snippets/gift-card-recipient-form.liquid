@@ -8,7 +8,7 @@
   Usage:
   {% render 'gift-card-recipient-form', product: product, form: form, section: section %}
 {% endcomment %}
-{{- 'recipient-form.css' | asset_url | stylesheet_tag -}}
+{{- 'recipient-form.css' | asset_url | stylesheet_tag: preload: true -}}
 <div class="customer">
   {%- assign gift_card_recipient_control_flag = 'properties[__shopify_send_gift_card_to_recipient]' -%}
   <recipient-form

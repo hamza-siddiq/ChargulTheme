@@ -1,5 +1,3 @@
-{{- 'featured-collection.css' | asset_url | stylesheet_tag -}}
-{{- 'product-grid.css' | asset_url | stylesheet_tag -}}
 {%- liquid
 	assign section_heading = section.settings.heading
 	assign section_description = section.settings.description
@@ -34,6 +32,8 @@
 		assign tag = 'slide-show'
 	endif
 -%}
+{{- 'featured-collection.css' | asset_url | stylesheet_tag: preload: true -}}
+{{- 'product-grid.css' | asset_url | stylesheet_tag: preload: true -}}
 <div class="featured-collection featured-collection--full-width-{{ full_width }}{% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
 	{% render 'section-header', section_heading: section_heading, section_description: section_description %}
 	{%- if title_cards.size > 0 -%}
