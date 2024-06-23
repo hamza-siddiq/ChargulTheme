@@ -29,13 +29,13 @@
 							<option value="{{ blog.url | escape }}/tagged/{{ single_tag | handle }}" {{ selected }}>{{ single_tag }}</option>
 						{% endfor %}
 					</select>
-					{{ 'blog.js' | asset_url | script_tag }}
 				</div>
 			</div>
 			{% endif %}
 		</div>
 	</div>
 </div>
+{{ 'blog.js' | asset_url | script_tag }}
 {% schema %}
   {
 		"name": "Blog header",

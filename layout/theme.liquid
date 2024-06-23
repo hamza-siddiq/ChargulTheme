@@ -15,35 +15,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 	<meta name="theme-color" content="{{ settings.color_body_bg }}">
 	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+	<meta name="keywords" content="afghan rugs, hand knotted rugs, wool rugs">
+
+
 	<link rel="canonical" href="{{ canonical_url }}">
 	<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-	{% render 'head-preload' %}
+	{% if settings.favicon != blank -%}
+		<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+	{%- endif %}
+	{%- unless settings.heading_font.system? and settings.body_font.system? -%}
+		<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+	{%- endunless -%}
+	{{ 'app.css' | asset_url | stylesheet_tag }}
+
+	<title>
+		{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} - {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} - Page {{ current_page }}{% else %}{% unless page_title contains shop.name or page_title contains ' x ' %} | {{ shop.name }}{% endunless %}{% endif %}
+	</title>
+
+	{% if page_description %}
+		<meta name="description" content="{{ page_description | escape }}">
+		{% endif %}
+
 	{%- if request.path == '/collections/vendors' -%}
 		<meta name="robots" content="noindex nofollow">
 	{%- endif -%}
 	{%- if request.path == '/collections/all' -%}
 		<meta name="robots" content="noindex nofollow">
 	{%- endif -%}
-	{% if settings.favicon != blank -%}
-		<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-	{%- endif %}
-	<title>
-		{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} - {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} - Page {{ current_page }}{% else %}{% unless page_title contains shop.name or page_title contains ' x ' %} | {{ shop.name }}{% endunless %}{% endif %}
-	</title>
 
-	{% if page_description %}
-	<meta name="description" content="{{ page_description | escape }}">
-	{% endif %}
-    <meta name="keywords" content="afghan rugs, hand knotted rugs, wool rugs">
-
-	{%- unless settings.heading_font.system? and settings.body_font.system? -%}
-		<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-	{%- endunless -%}
-
+	{% render 'head-preload' %}
 	{% render 'social-meta-tags' %}
-
-	{{ 'app.css' | asset_url | stylesheet_tag }}
-
 	{% render 'head-variables' %}
 
 	<script>
@@ -79,7 +80,6 @@
 		};
 	</script>
 	{{ content_for_header }} <!-- Header hook for plugins -->
-
 	<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 </head>
 <body class="animations-{{ settings.animations }} button-uppercase-{{ settings.button_uppercase }} navigation-uppercase-{{ settings.navigation_uppercase }} product-title-uppercase-{{ settings.product_title_uppercase }} {% if customer %} customer-logged-in{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}">

@@ -21,8 +21,6 @@
 	<div class="collection-container section-spacing-bottom collection-container--full-width-{{ full_width }}">
 		{% render 'facets', results: search, enable_filtering: enable_filtering, enable_sorting: enable_sorting, show_counts: show_counts, filter_color_swatches: filter_color_swatches %}
 		{{ 'facets.css' | asset_url | stylesheet_tag }}
-		{{ 'nouislider.js' | asset_url | script_tag }}
-		<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 		<div id="ProductGridContainer">
 			{%- if search.results.size == 0 -%}
 				<div class="row">
@@ -58,7 +56,8 @@
 		</div>
 	</div>
 {%- endif -%}
-
+{{ 'nouislider.js' | asset_url | script_tag }}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 {% schema %}
   {
     "name": "Product grid",

@@ -1,6 +1,5 @@
 <div class="blog-post-detail--sticky"></div>
 {{ 'article.css' | asset_url | stylesheet_tag }}
-{{ 'article.js' | asset_url | script_tag }}
 {%- render 'article-navigation', article_show_nav: section.settings.article_show_nav -%}
 <div class="blog-post-detail--offset">
   <div class="blog-post-detail--wrapper section-spacing">
@@ -187,7 +186,7 @@
     {% endif %}
   </div>
 </div>
-
+{{ 'article.js' | asset_url | script_tag }}
 {% schema %}
 {
 "name": "Blog post",

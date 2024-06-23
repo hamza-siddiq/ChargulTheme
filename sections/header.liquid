@@ -56,9 +56,9 @@
 	</div>
 	{%- endif -%}
 </div>
-{{- 'header.js' | asset_url | script_tag -}}
 {% render 'organization-schema' %}
 {% render 'website-schema' %}
+{{- 'header.js' | asset_url | script_tag -}}
 
 {% schema %}
 {
