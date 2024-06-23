@@ -1,0 +1,42 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ article.url | absolute_url | json }}
+      },
+      "headline": {{ article.title | json }},
+      "name": {{ article.title | json }},
+      "description": {{ article.excerpt_or_content | strip_html | truncatewords: 150 | json }},
+      "image": [
+        {{ article.image | img_url: 'master' | prepend: "https:" | json }},
+        {{ article.image | img_url: '1200x' | prepend: "https:" | json }},
+        {{ article.image | img_url: '600x' | prepend: "https:" | json }}
+      ],
+      "author": {
+        "@type": "Person",
+        "name": {{ article.author | json }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }},
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.chargul.com/cdn/shop/files/logo-3.png?v=1693171118",
+          "width": "200",
+          "height": "60"
+        }
+      },
+      "datePublished": {{ article.published_at | date: '%Y-%m-%d' | json }},
+      "dateModified": {{ article.updated_at | date: '%Y-%m-%d' | json }},
+      {% if article.tags.size > 0 %}
+        "keywords": {{ article.tags | join: ', ' | json }},
+      {% endif %}
+      {% if blog.title %}
+        "articleSection": {{ blog.title | json }},
+      {% endif %}
+      "wordCount": {{ article.content | strip_html | split: ' ' | size | json }},
+      "timeRequired": "PT{{ article.content | strip_html | split: ' ' | size | divided_by: 200 | round }}M"
+    }
+    </script>
