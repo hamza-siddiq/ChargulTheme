@@ -30,7 +30,7 @@
 
 
 	{{ 'app.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'gift-card.css' | asset_url | stylesheet_tag }}
+    {{ 'gift-card.css' | asset_url | stylesheet_tag: preload: true }}
 
 		{% render 'head-variables' %}
   </head>
