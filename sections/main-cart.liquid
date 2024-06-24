@@ -1,8 +1,8 @@
+{{ 'cart.css' | asset_url | stylesheet_tag: preload: true }}
 {%- liquid
 	assign shipping_estimator = section.blocks | where: "type", "shipping_estimator"
 	assign items_requiring_shipping = cart.items | where: 'requires_shipping'
 -%}
-{{ 'cart.css' | asset_url | stylesheet_tag }}
 <div class="row">
 	<div class="small-12 columns">
 		<div class="thb-cart-form thb-cart-form--cart-notes-{{ section.settings.cart_notes_enable }}" id="Cart" data-id="{{ section.id }}">
@@ -251,7 +251,7 @@
 		</div>
 	</div>
 </div>
-{{ 'cart.js' | asset_url | script_tag }}
+<script src="{{ 'cart.js' | asset_url }}" defer></script>
 {% schema %}
 {
 	"name": "Cart",

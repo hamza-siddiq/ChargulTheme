@@ -95,9 +95,9 @@
 		<div class="click-capture"></div>
 	</div>
 
-	{{ 'vendor.min.js' | asset_url | script_tag }}
+	<script src="{{ 'vendor.min.js' | asset_url }}" defer></script>
 	{% if settings.animations %}
-		{{ 'animations.min.js' | asset_url | script_tag }}
+		<script src="{{ 'animations.min.js' | asset_url }}" defer></script>
 		<script>
 			gsap.defaults({
 				ease: Power4.easeOut
@@ -106,18 +106,18 @@
 		</script>
 	{% endif %}
 	{% if settings.enable_quick_view or settings.enable_quick_add %}
-		{{ 'product.js' | asset_url | script_tag }}
+		<script src="{{ 'product.js' | asset_url }}" defer></script>
 	{% endif %}
-	{{ 'slideshow.js' | asset_url | script_tag  }}
-	{{ 'app.js' | asset_url | script_tag }}
+	<script src="{{ 'slideshow.js' | asset_url }}" defer></script>
+	<script src="{{ 'app.js' | asset_url }}" defer></script>
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
 	{%- if settings.free_shipping -%}
-		{{ 'free-shipping.js' | asset_url | script_tag }}
+		<script src="{{ 'free-shipping.js' | asset_url }}" defer></script>
 		{{ 'free-shipping.css' | asset_url | stylesheet_tag }}
 	{%- endif -%}
 	{%- if request.design_mode -%}
-		{{ 'theme-editor.js' | asset_url | script_tag }}
+		<script src="{{ 'theme-editor.js' | asset_url }}" defer></script>
 	{%- endif -%}
 	{% render 'back-to-top' %}
 </body>

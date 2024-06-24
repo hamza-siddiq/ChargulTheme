@@ -186,7 +186,7 @@
     {% endif %}
   </div>
 </div>
-{{ 'article.js' | asset_url | script_tag }}
+<script src="{{ 'article.js' | asset_url }}" defer></script>
 {% schema %}
 {
 "name": "Blog post",

@@ -68,7 +68,7 @@
 		{%- endif -%}
 	</slide-show>
 </div>
-{{- 'collection-tabs.js' | asset_url | script_tag -}}
+<script src="{{ 'collection-tabs.js' | asset_url }}" defer></script>
 {% schema %}
   {
     "name": "Collection tabs",

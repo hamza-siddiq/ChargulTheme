@@ -35,7 +35,7 @@
 		</div>
 	</div>
 </div>
-{{ 'blog.js' | asset_url | script_tag }}
+<script src="{{ 'blog.js' | asset_url }}" defer></script>
 {% schema %}
   {
 		"name": "Blog header",

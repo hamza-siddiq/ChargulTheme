@@ -58,7 +58,7 @@
 </div>
 {% render 'organization-schema' %}
 {% render 'website-schema' %}
-{{- 'header.js' | asset_url | script_tag -}}
+<script src="{{ 'header.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
