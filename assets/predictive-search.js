@@ -9,6 +9,8 @@ class PredictiveSearch {
     this.close_button = this.container.querySelector('.thb-search-close');
     this.input = this.container.querySelector('input[type="search"]');
     this.predictiveSearchResults = this.container.querySelector('.thb-quick-search--results');
+    this.cache = new Map();
+    this.cacheSize = 20; // Adjust as needed
 
     this.setupEventListeners();
   }
@@ -19,7 +21,7 @@ class PredictiveSearch {
 
     this.input.addEventListener('input', debounce((event) => {
       this.onChange(event);
-    }, 300).bind(this));
+    }, 200).bind(this));
 
     this.button.addEventListener('click', (event) => {
       var _this = this;
@@ -68,7 +70,6 @@ class PredictiveSearch {
         event.preventDefault();
       });
     });
-
   }
 
   getQuery() {
@@ -105,6 +106,11 @@ class PredictiveSearch {
   getSearchResults(searchTerm) {
     const queryKey = searchTerm.replace(" ", "-").toLowerCase();
 
+    if (this.cache.has(queryKey)) {
+      this.renderSearchResults(this.cache.get(queryKey));
+      return;
+    }
+
     this.predictiveSearchResults.classList.add('loading');
 
     fetch(`${theme.routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&${encodeURIComponent('resources[type]')}=product,article,query&${encodeURIComponent('resources[limit]')}=10&section_id=predictive-search`)
@@ -114,12 +120,15 @@ class PredictiveSearch {
           var error = new Error(response.status);
           throw error;
         }
-
         return response.text();
       })
       .then((text) => {
         const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#shopify-section-predictive-search').innerHTML;
-
+        this.cache.set(queryKey, resultsMarkup);
+        if (this.cache.size > this.cacheSize) {
+          const oldestKey = this.cache.keys().next().value;
+          this.cache.delete(oldestKey);
+        }
         this.renderSearchResults(resultsMarkup);
       })
       .catch((error) => {
@@ -129,9 +138,7 @@ class PredictiveSearch {
 
   renderSearchResults(resultsMarkup) {
     this.predictiveSearchResults.innerHTML = resultsMarkup;
-
     this.predictiveSearchResults.classList.add('active');
-
     this.categoryToggle();
   }
 
@@ -143,7 +150,9 @@ class PredictiveSearch {
     document.querySelector('.header-section').classList.remove('search-open');
   }
 }
-window.addEventListener('load', () => {
+
+// Initialize PredictiveSearch when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
   if (typeof PredictiveSearch !== 'undefined') {
     new PredictiveSearch();
   }
