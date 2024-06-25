@@ -1,54 +1,80 @@
 {%- liquid
-	assign lazy_loading = settings.lazy_loading
 	assign image_sizes = sizes | split: ","
-
+	
 	if priority
-		assign fetchpriority = priority
+	  assign fetchpriority = priority
 	else
-		assign fetchpriority = 'auto'
+	  assign fetchpriority = 'auto'
 	endif
--%}
-{%- capture srcset -%}
-  {%- for size in image_sizes -%}
-    {%- liquid
-				assign small_size = '20x'
-    		assign size_array = size | split: "x"
-				assign size_width = size_array[0]
-				if size_array[0] != "0"
-					assign size_x = size_array[0] | append: 'x'
-				else
-					assign size_width = image.width | times: size_array[1] | divided_by: image.height | floor
-				endif
-    		if size_array[1] != "0"
-      		assign size_x = size
-      		assign small_x = size_array[1] | times: 20 | divided_by: size_array[0] | floor
-  				assign small_size = small_size | append: small_x
-    		endif
-		-%}
-    {{- image.src | img_url: size_x, crop: 'center' }} {{ size_width }}w,
-  {%- endfor -%}
-{%- endcapture -%}
-{%- liquid
+  -%}
+  
+  {%- capture srcset -%}
+	{%- for size in image_sizes -%}
+	  {%- liquid
+		assign size_array = size | split: "x"
+		assign size_width = size_array[0]
+		assign size_height = size_array[1]
+  
+		if size_height == '0' or size_height == 0
+		  assign size_height = size_width | divided_by: image.aspect_ratio | round
+		  if size_height < 1
+			assign size_height = 1
+		  elsif size_height > 5760
+			assign size_height = 5760
+		  endif
+		endif
+  
+		# Add mobile-specific sizes
+		assign mobile_width = size_width | times: 0.5 | round
+		assign mobile_height = size_height | times: 0.5 | round
+		if mobile_height < 1
+		  assign mobile_height = 1
+		elsif mobile_height > 5760
+		  assign mobile_height = 5760
+		endif
+	  -%}
+	  {{- image | image_url: width: size_width, crop: 'center' }} {{ size_width }}w,
+	  {{- image | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} {{ mobile_width }}w,
+	{%- endfor -%}
+  {%- endcapture -%}
+  
+  {%- liquid
 	assign l = srcset | size | minus: 1
 	assign w = image.width
 	assign h = image.height
+  
 	if retina
-		assign w = image.width | divided_by: 2
-		assign h = image.height | divided_by: 2
+	  assign w = image.width | divided_by: 2
+	  assign h = image.height | divided_by: 2
 	endif
-
+  
 	assign focal_point = image.presentation.focal_point
-
-	capture src
-		if lazy_loading
-			echo image.src | img_url: small_size, crop: 'center'
-		else
-			echo image.src | img_url: image_sizes[0], crop: 'center'
-		endif
-	endcapture
--%}
-{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-<img class="lazyload{% unless lazy_loading %} no-blur{% endunless %}{% if retina %} retina_size{% endif %} {{ class | escape }}" width="{{ w }}" height="{{ h }}" data-sizes="auto" src="{{- src -}}" data-srcset="{{ srcset | slice: 0, l | strip_newlines -}}" fetchpriority="{{ fetchpriority }}" alt="{{ image.alt | escape }}" {% if focal_point -%}style="object-position: {{ focal_point }};"{% endif %} />
-<noscript>
-<img width="{{ image.width }}" height="{{ image.height }}" sizes="auto" src="{{- image.src | img_url: image_sizes[0], crop: 'center' -}}" srcset="{{ srcset | slice: 0, l | strip_newlines }}" alt="{{ image.alt | escape }}" fetchpriority="{{ fetchpriority }}" loading="lazy" {% if focal_point -%}style="object-position: {{ focal_point }};"{% endif %} />
-</noscript>{% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+  
+	# Get the first size from image_sizes for the src attribute
+	assign first_size = image_sizes | first | split: "x"
+	assign first_width = first_size[0] | plus: 0
+	assign first_height = first_size[1] | plus: 0
+  
+	if first_height == '0' or first_height == 0
+	  assign first_height = first_width | divided_by: image.aspect_ratio | round
+	  if first_height < 1
+		assign first_height = 1
+	  elsif first_height > 5760
+		assign first_height = 5760
+	  endif
+	endif
+  -%}
+  
+  <img
+	class="{{ class | escape }}{% if retina %} retina_size{% endif %}"
+	width="{{ w }}"
+	height="{{ h }}"
+	sizes="(max-width: 767px) 50vw, 100vw"
+	src="{{ image | image_url: width: first_width, height: first_height, crop: 'center' }}"
+	srcset="{{ srcset | slice: 0, l | strip_newlines -}}"
+	fetchpriority="{{ fetchpriority }}"
+	loading="lazy"
+	alt="{{ image.alt | escape }}"
+	{% if focal_point -%}style="object-position: {{ focal_point }};"{% endif %}
+  >
+  
