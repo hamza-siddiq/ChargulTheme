@@ -95,9 +95,9 @@
 		<div class="click-capture"></div>
 	</div>
 
-	<script src="{{ 'vendor.min.js' | asset_url }}" defer></script>
+	{{ 'vendor.min.js' | asset_url | script_tag }}
 	{% if settings.animations %}
-		<script src="{{ 'animations.min.js' | asset_url }}" defer></script>
+		{{ 'animations.min.js' | asset_url | script_tag}}
 		<script>
 			gsap.defaults({
 				ease: Power4.easeOut
@@ -106,10 +106,10 @@
 		</script>
 	{% endif %}
 	{% if settings.enable_quick_view or settings.enable_quick_add %}
-		<script src="{{ 'product.js' | asset_url }}" defer></script>
+		{{ 'product.js' | asset_url }}
 	{% endif %}
-	<script src="{{ 'slideshow.js' | asset_url }}" defer></script>
-	<script src="{{ 'app.js' | asset_url }}" defer></script>
+	{{ 'slideshow.js' | asset_url | script_tag}}
+	{{ 'app.js' | asset_url | script_tag }}
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
 	{%- if settings.free_shipping -%}
