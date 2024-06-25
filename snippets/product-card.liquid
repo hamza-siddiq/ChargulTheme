@@ -16,13 +16,40 @@
       assign ratio = 0.8
       assign sizes = '345x430,596x700'
     endif
+
+    assign valid_sizes = ''
+  %}
+  {% assign size_array = sizes | split: ',' %}
+  {% for size in size_array %}
+    {% liquid
+      assign width_height = size | split: 'x'
+      assign width = width_height[0]
+      assign height = width_height[1]
+      if height == '0' or height == 0
+        assign height = width | divided_by: ratio | round
+        if height < 1
+          assign height = 1
+        elsif height > 5760
+          assign height = 5760
+        endif
+      endif
+      assign valid_size = width | append: 'x' | append: height
+      assign valid_sizes = valid_sizes | append: valid_size
+      if forloop.last == false
+        assign valid_sizes = valid_sizes | append: ','
+      endif
+    %}
+  {% endfor %}
+
+  {% liquid
+    assign sizes = valid_sizes
     assign product_content_alignment = settings.product_content_alignment
 
     assign is_purchasable = false
     if product_card_product.available and product_card_product.variants.size == 1
       assign is_purchasable = true
     endif
-  -%}
+  %}
   <product-card class="product-card text-{{ product_content_alignment }}">
     <figure class="product-featured-image {% if settings.products_hover_image and product_card_product.images.size > 1 %}thb-hover{% endif %}">
       {% render 'product-card-badge', product_card_product: product_card_product %}
@@ -72,7 +99,7 @@
                   assign button_content = 'products.product.add_to_cart' | t
                 endif
               endif
-            -%}
+            %}
             {% if is_purchasable %}
               <button
                 class="product-card--add-to-cart-button product-card--add-to-cart-button-simple"
@@ -99,11 +126,6 @@
             {% endif %}
           {%- endif -%}
         </a>
-      {% if template.name == 'collection' %}
-        </h2>
-      {% else %}
-        </h3>
-      {% endif %}
     </figure>
     <div class="product-card-info">
       {%- if settings.show_products_vendor -%}
@@ -144,9 +166,9 @@
     </div>
   </product-card>
 {%- else -%}
-  {%- liquid
+  {% liquid
     assign product_content_alignment = settings.product_content_alignment
-  -%}
+  %}
   <product-card class="product-card text-{{ product_content_alignment }}">
     <figure class="product-featured-image {% if settings.products_hover_image %}thb-hover{% endif %}">
       {% if template.name == 'collection' %}
@@ -216,4 +238,3 @@
     </div>
   </product-card>
 {%- endif -%}
-
