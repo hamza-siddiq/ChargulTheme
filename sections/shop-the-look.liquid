@@ -1,5 +1,4 @@
 {{ 'shop-the-look.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
 {%- liquid
 	assign image = section.settings.image
 	assign image_mobile = section.settings.image_mobile
@@ -76,6 +75,7 @@
 		</div>
 	</div>
 </shop-the-look>
+<script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
 {% schema %}
   {
     "name": "Shop the look",

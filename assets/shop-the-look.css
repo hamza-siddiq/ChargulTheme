@@ -118,8 +118,7 @@ Utilities
     opacity: 0; } }
 
 @-ms-keyframes pulsing {
-  .shop-the-look .thb-hotspot-content 100% {
-    transform: scale(1.75);
+  100% {transform: scale(1.75);
     opacity: 0; } }
 
 @keyframes pulsing {

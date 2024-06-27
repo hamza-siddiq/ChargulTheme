@@ -112,7 +112,7 @@
 		</script>
 	{% endif %}
 	{% if settings.enable_quick_view or settings.enable_quick_add %}
-		{{ 'product.js' | asset_url }}
+		<script src="{{ 'product.js' | asset_url }}" defer></script>
 	{% endif %}
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
