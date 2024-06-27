@@ -30,7 +30,7 @@
 	            {%- endif -%}
 	            {%- for media in product.media -%}
 								{%- unless media.id == featured_media.id -%}
-	              {%- render 'product-media', product: product, section: section, forloop: forloop, media: media, sizes: sizes, variant_images: variant_images, hide_variants: hide_variants -%}
+	              {%- render 'product-media', product: product, section: section, forloop: forloop, media: media, sizes: sizes, variant_images: variant_images, hide_variants: hide_variants,loading: 'lazy' -%}
 								{%- endunless -%}
 	            {%- endfor -%}
 							{%- if product.media.size > 1 -%}

@@ -54,7 +54,7 @@
     <figure class="product-featured-image {% if settings.products_hover_image and product_card_product.images.size > 1 %}thb-hover{% endif %}">
       {% render 'product-card-badge', product_card_product: product_card_product %}
         <a
-          href="{{ product_card_product.url | within: collection }}"
+          href="{{ product_card_product.url}}"
           title="{{ product_card_product.title | escape }}"
           class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}"
           style="--padding-bottom: {{ 1 | divided_by: ratio | times: 100 }}%;"
@@ -144,7 +144,7 @@
         <h3 style="font-family: Chivo, sans-serif;font-weight: 400;margin-bottom: 0px;">
       {% endif %}
         <a
-          href="{{ product_card_product.url | within: collection }}"
+          href="{{ product_card_product.url }}"
           title="{{ product_card_product.title | escape }}"
           class="product-card-title"
         >
@@ -177,7 +177,7 @@
         <h3 style="font-family: Chivo, sans-serif;font-weight: 400;margin-bottom: 0px;">
       {% endif %}
         <a
-          href="{{ product_card_product.url | within: collection }}"
+          href="{{ product_card_product.url}}"
           title="{{ product_card_product.title | escape }}"
           class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}"
           style="--padding-bottom: {{ 1 | divided_by: 1 | times: 100 }}%;"
