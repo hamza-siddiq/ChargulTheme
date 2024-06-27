@@ -1,0 +1,25 @@
+<script type="module" src="{{ 'vendor-jquery-bridget.js' | asset_url }}" defer></script>
+<script type="module" src="{{ 'vendor-flickity-pkgd.min.js' | asset_url }}" defer></script>
+<script type="module" src="{{ 'app.js' | asset_url }}" defer></script>
+<script type="module" src="{{ 'slideshow.js' | asset_url }}" defer></script>
+{% if settings.animations %}
+    {{ 'animations.min.js' | asset_url | script_tag}}
+    <script>
+        gsap.defaults({
+            ease: Power4.easeOut
+        });
+        gsap.registerPlugin(ScrollTrigger);
+    </script>
+{% endif %}
+{% if settings.enable_quick_view or settings.enable_quick_add %}
+    {{ 'product.js' | asset_url }}
+{% endif %}
+<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+{%- if settings.free_shipping -%}
+    <script src="{{ 'free-shipping.js' | asset_url }}" defer></script>
+    {{ 'free-shipping.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if request.design_mode -%}
+    <script src="{{ 'theme-editor.js' | asset_url }}" defer></script>
+{%- endif -%}

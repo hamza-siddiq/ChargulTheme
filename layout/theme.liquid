@@ -19,6 +19,10 @@
 
 	<link rel="canonical" href="{{ canonical_url }}">
 	<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+	<link preload href="/cdn/fonts/chivo/chivo_n4.bf4dc1c0e4649d2f5a28281870307415c2a9c652.woff2?h1=NDIwN2MxLTIuYWNjb3VudC5teXNob3BpZnkuY29t&h2=Y2hhcmd1bC5jb20&hmac=4e7dc2972b2f24b82ae07d17991e603a1e9be26e4c7522d0f66513f72ed8c27c" as="font" type="font/woff2" crossorigin>
+	<link preload href="/cdn/fonts/chivo/chivo_n7.d83b4aaa520af8b24ea0f1eb81a6d2d8b1a2ad49.woff2?h1=NDIwN2MxLTIuYWNjb3VudC5teXNob3BpZnkuY29t&h2=Y2hhcmd1bC5jb20&hmac=440687087b89e4c5edfa46ed5e100d1e6f5b6ff14fdce37174883aa43cdd9cd5" as="font" type="font/woff2" crossorigin>
+	<link preload href="/cdn/fonts/itc_clearface/itcclearface_n7.9f5e17613f1c79bf939e997402c6a337cb5a1918.woff2?h1=NDIwN2MxLTIuYWNjb3VudC5teXNob3BpZnkuY29t&h2=Y2hhcmd1bC5jb20&hmac=d89254dc2292708c0a04b1954b714e26659777a3f08c168b992f6186d5d8e0e2" as="font" type="font/woff2" crossorigin>
+	<link preload href="/cdn/fonts/chivo/chivo_i4.470484818143ea189f363c3f40b1b964b6f9b99a.woff2?h1=NDIwN2MxLTIuYWNjb3VudC5teXNob3BpZnkuY29t&h2=Y2hhcmd1bC5jb20&hmac=8a895af50725db6631c39d347107367f2b03aaa40fca5edc2e60b0391eff66f4" as="font" type="font/woff2" crossorigin>
 	{% if settings.favicon != blank -%}
 		<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
 	{%- endif %}
@@ -94,11 +98,12 @@
 		<div class="click-capture"></div>
 	</div>
 
-	<script type="module" src="{{ 'vendor.min.js' | asset_url }}" async></script>
-	<script type="module" src="{{ 'slideshow.js' | asset_url }}" async></script>
-	<script type="module" src="{{ 'app.js' | asset_url }}" async></script>
+	<script type="module" src="{{ 'vendor-jquery-bridget.js' | asset_url }}" defer></script>
+	<script type="module" src="{{ 'vendor-flickity-pkgd.min.js' | asset_url }}" defer></script>
+	<script type="module" src="{{ 'app.js' | asset_url }}" defer></script>
+	<script type="module" src="{{ 'slideshow.js' | asset_url }}" defer></script>
 	{% if settings.animations %}
-		{{ 'animations.min.js' | asset_url | script_tag}}
+		<script type="module" src="{{ 'animations.min.js' | asset_url }}" defer="defer"></script>
 		<script>
 			gsap.defaults({
 				ease: Power4.easeOut
