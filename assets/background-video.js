@@ -1,1 +1,76 @@
-if(!customElements.get("background-video")){class a extends HTMLElement{constructor(){super()}connectedCallback(){let e=this,t=this.querySelector(".background-video__iframe");t&&t.querySelector("iframe")&&(t.querySelector("iframe").onload=function(){e.videoPlay(t)}),this.prepareAnimations()}videoPlay(e){setTimeout(()=>{"youtube"===e.dataset.provider?e.querySelector("iframe").contentWindow.postMessage(JSON.stringify({event:"command",func:"playVideo",args:""}),"*"):"vimeo"===e.dataset.provider&&e.querySelector("iframe").contentWindow.postMessage(JSON.stringify({method:"play"}),"*")},10)}prepareAnimations(){let r=this;new IntersectionObserver((e,n)=>{e.forEach(e=>{var t,a,o;e.isIntersecting&&(a=(t=r.querySelector(".animated-heading")).textContent.trim().split(" "),t.innerHTML=a.map(e=>`<span class="word">${e}</span>`).join(" "),o=(a=r.querySelector(".animated-text")).textContent.trim().split(" "),a.innerHTML=o.map(e=>`<span class="word">${e}</span>`).join(" "),t.classList.add("animate"),a.classList.add("animate"),(o=r.querySelectorAll(".word")).forEach((e,t)=>{e.style.animationDelay=.1*t+"s"}),setTimeout(()=>{r.querySelector(".video-lightbox-modal__button").classList.add("animate")},100*o.length),n.unobserve(e.target))})},{threshold:.2}).observe(r)}}customElements.define("background-video",a)}
+/**
+ *  @class
+ *  @function BackgroundVideo
+ */
+if (!customElements.get('background-video')) {
+  class BackgroundVideo extends HTMLElement {
+    constructor() {
+      super();
+    }
+    connectedCallback() {
+      let _this = this;
+      // Video Support.
+      let video_container = this.querySelector('.background-video__iframe');
+      if (video_container) {
+        if (video_container.querySelector('iframe')) {
+          video_container.querySelector('iframe').onload = function () {
+            _this.videoPlay(video_container);
+          };
+        }
+      }
+      // Animation Support.
+      this.prepareAnimations();
+    }
+    videoPlay(video_container) {
+      setTimeout(() => {
+        if (video_container.dataset.provider === 'youtube') {
+          video_container.querySelector('iframe').contentWindow.postMessage(JSON.stringify({ event: "command", func: "playVideo", args: "" }), "*");
+        } else if (video_container.dataset.provider === 'vimeo') {
+          video_container.querySelector('iframe').contentWindow.postMessage(JSON.stringify({ method: "play" }), "*");
+        }
+      }, 10);
+    }
+prepareAnimations() {
+  let section = this;
+
+  // Create an Intersection Observer
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Wrap each word in a span element
+        const heading = section.querySelector('.animated-heading');
+        const headingText = heading.textContent.trim();
+        const headingWords = headingText.split(' ');
+        heading.innerHTML = headingWords.map(word => `<span class="word">${word}</span>`).join(' ');
+
+        const text = section.querySelector('.animated-text');
+        const textContent = text.textContent.trim();
+        const textWords = textContent.split(' ');
+        text.innerHTML = textWords.map(word => `<span class="word">${word}</span>`).join(' ');
+
+        // Animate heading and text
+        heading.classList.add('animate');
+        text.classList.add('animate');
+
+        // Animate each word with a delay
+        const words = section.querySelectorAll('.word');
+        words.forEach((word, index) => {
+          word.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Animate video lightbox modal button
+        setTimeout(() => {
+          section.querySelector('.video-lightbox-modal__button').classList.add('animate');
+        }, words.length * 100);
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Observe the section
+  observer.observe(section);
+}
+  }
+  customElements.define('background-video', BackgroundVideo);
+}
