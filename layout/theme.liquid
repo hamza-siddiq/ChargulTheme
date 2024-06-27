@@ -94,7 +94,9 @@
 		<div class="click-capture"></div>
 	</div>
 
-	{{ 'vendor.min.js' | asset_url | script_tag }}
+	<script type="module" src="{{ 'vendor.min.js' | asset_url }}" async></script>
+	<script type="module" src="{{ 'slideshow.js' | asset_url }}" async></script>
+	<script type="module" src="{{ 'app.js' | asset_url }}" async></script>
 	{% if settings.animations %}
 		{{ 'animations.min.js' | asset_url | script_tag}}
 		<script>
@@ -107,8 +109,6 @@
 	{% if settings.enable_quick_view or settings.enable_quick_add %}
 		{{ 'product.js' | asset_url }}
 	{% endif %}
-	{{ 'slideshow.js' | asset_url | script_tag}}
-	{{ 'app.js' | asset_url | script_tag }}
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
 	{%- if settings.free_shipping -%}
