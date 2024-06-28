@@ -85,7 +85,7 @@
 	{{ content_for_header }} <!-- Header hook for plugins -->
 	<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 </head>
-<body class="animations-{{ settings.animations }} button-uppercase-{{ settings.button_uppercase }} navigation-uppercase-{{ settings.navigation_uppercase }} product-title-uppercase-{{ settings.product_title_uppercase }} {% if customer %} customer-logged-in{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}">
+<body class="button-uppercase-{{ settings.button_uppercase }} navigation-uppercase-{{ settings.navigation_uppercase }} product-title-uppercase-{{ settings.product_title_uppercase }} {% if customer %} customer-logged-in{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}">
 	<a class="screen-reader-shortcut" href="#main-content">{{ 'accessibility.skip_to_text' | t }}</a>
 	<div id="wrapper">
 		{% sections 'header-group' %}
@@ -98,19 +98,9 @@
 		{% render 'back-to-top' %}
 		<div class="click-capture"></div>
 	</div>
-	<script type="module" src="{{ 'vendor-jquery-bridget.js' | asset_url }}" defer></script>
 	<script type="module" src="{{ 'vendor-flickity-pkgd.min.js' | asset_url }}" defer></script>
 	<script type="module" src="{{ 'app.js' | asset_url }}" defer></script>
 	<script type="module" src="{{ 'slideshow.js' | asset_url }}" defer></script>
-	{% if settings.animations %}
-		<script type="module" src="{{ 'animations.min.js' | asset_url }}" defer="defer"></script>
-		<script>
-			gsap.defaults({
-				ease: Power4.easeOut
-			});
-			gsap.registerPlugin(ScrollTrigger);
-		</script>
-	{% endif %}
 	{% if settings.enable_quick_view or settings.enable_quick_add %}
 		<script src="{{ 'product.js' | asset_url }}" defer></script>
 	{% endif %}
