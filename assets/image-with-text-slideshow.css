@@ -224,3 +224,29 @@ https://flickity.metafizzy.co
         right: 70px; } }
     .image-with-text-slideshow .flickity-page-dots li:first-child {
       margin-left: 0; }
+
+
+      .image-with-text-slideshow {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+        flex-direction: column-reverse; /* This will stack elements vertically on mobile, with text on top */
+      }
+      
+      /* For larger screens, revert to horizontal layout */
+      @media only screen and (min-width: 768px) {
+        .image-with-text-slideshow {
+          flex-direction: row;
+        }
+      }
+
+      .image-with-text-slideshow.image_first_mobile {
+        flex-direction: column;
+      }
+      
+      @media only screen and (min-width: 768px) {
+        .image-with-text-slideshow.image_first_mobile {
+          flex-direction: row;
+        }
+      }
+      
