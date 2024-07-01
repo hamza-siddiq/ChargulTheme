@@ -1,6 +1,5 @@
-<link preload as="style" href="{{ 'app.css' | asset_url }}">
 {% if template contains 'product' -%}
-<link preload as="style" href="{{ 'product.css' | asset_url }}">
+<link href="{{ 'product.css' | asset_url }}">
 {% liquid
 	if product.selected_or_first_available_variant.featured_media.preview_image
 		assign image = product.selected_or_first_available_variant.featured_media.preview_image
@@ -19,13 +18,3 @@
 	endif
 -%}
 {%- endif %}
-
-
-
-<script type="module" src="{{ 'vendor-lazysizes.min.js' | asset_url }}" defer></script>
-<script>
-window.lazySizesConfig = window.lazySizesConfig || {};
-window.lazySizesConfig.expand = 250;
-window.lazySizesConfig.loadMode = 1;
-window.lazySizesConfig.loadHidden = false;
-</script>
