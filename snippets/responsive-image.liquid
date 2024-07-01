@@ -1,13 +1,20 @@
 {%- liquid
+	
+	assign sizes = '320x0,920x0'
+	if input_sizes
+		assign sizes = input_sizes
+	
 	assign image_sizes = sizes | split: ","
 	
 	if priority
 	  assign fetchpriority = priority
+	  assign loading = 'eager'
 	else
 	  assign fetchpriority = 'auto'
+	  assign loading = 'lazy'
 	endif
   -%}
-  
+
   {%- capture srcset -%}
 	{%- for size in image_sizes -%}
 	  {%- liquid
@@ -54,7 +61,7 @@
 	assign first_size = image_sizes | first | split: "x"
 	assign first_width = first_size[0] | plus: 0
 	assign first_height = first_size[1] | plus: 0
-  
+	
 	if first_height == '0' or first_height == 0
 	  assign first_height = first_width | divided_by: image.aspect_ratio | round
 	  if first_height < 1
@@ -65,7 +72,7 @@
 	endif
   -%}
   
-  <img
+<img
 	class="{{ class | escape }}{% if retina %} retina_size{% endif %}"
 	width="{{ w }}"
 	height="{{ h }}"
@@ -76,5 +83,4 @@
 	loading= "{{ loading  }}"
 	alt="{{ image.alt | escape }}"
 	{% if focal_point -%}style="object-position: {{ focal_point }};"{% endif %}
-  >
-  
+>
