@@ -1,4 +1,4 @@
-{{- 'before-after-image.css' | asset_url | stylesheet_tag:preload:true -}}
+{{- 'before-after-image.css' | asset_url | stylesheet_tag:defer:true -}}
 {%- liquid
 	assign section_heading = section.settings.heading
 	assign section_description = section.settings.description

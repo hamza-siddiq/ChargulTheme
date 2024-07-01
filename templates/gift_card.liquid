@@ -28,9 +28,7 @@
 
     {{ content_for_header }}
 
-
-	{{ 'app.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'gift-card.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'gift-card.css' | asset_url | stylesheet_tag: defer: true }}
 
 		{% render 'head-variables' %}
   </head>

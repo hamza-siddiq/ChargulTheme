@@ -1,4 +1,4 @@
-{{ 'product.css' | asset_url | stylesheet_tag }}
+{{ 'free-shipping.css' | asset_url | stylesheet_tag: defer: true }}
 {%- liquid
   assign first_3d_model = product.media | where: "media_type", "model" | first
   assign thumbnail_position = section.settings.thumbnail_position

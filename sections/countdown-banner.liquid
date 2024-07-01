@@ -1,4 +1,4 @@
-{{ 'countdown-banner.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'countdown-banner.css' | asset_url | stylesheet_tag: defer: true }}
 {%- liquid
 	assign desktop_height = section.settings.desktop_height
 	assign mobile_height = section.settings.mobile_height

@@ -1,6 +1,6 @@
-{{ 'product-grid.css' | asset_url | stylesheet_tag: preload: true }}
-{{ 'blog.css' | asset_url | stylesheet_tag: preload: true }}
-{{ 'facets.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'product-grid.css' | asset_url | stylesheet_tag: defer: true }}
+{{ 'blog.css' | asset_url | stylesheet_tag: defer: true }}
+{{ 'facets.css' | asset_url | stylesheet_tag: defer: true }}
 {%- liquid
 	assign full_width = section.settings.full_width
 	assign enable_filtering = section.settings.enable_filtering

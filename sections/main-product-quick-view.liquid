@@ -1,3 +1,4 @@
+{{ 'product.css' | asset_url | stylesheet_tag: defer: true }}
 {%- liquid
 	assign hide_variants = section.settings.hide_variants
 	assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
@@ -15,7 +16,6 @@
 			</div>
 		</div>
 		<div class="side-panel-content" id="Product-Drawer-Content">
-			{{ 'product.css' | asset_url | stylesheet_tag }}
 			<div class="thb-product-detail product">
 			  <div id="MediaGallery-{{ section.id }}">
 		      <product-slider id="Product-Quick-Slider" class="product-quick-images product-images" data-hide-variants="{{ hide_variants }}">

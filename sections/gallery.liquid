@@ -13,7 +13,7 @@
 	assign disable_top_spacing = section.settings.disable_top_spacing
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 -%}
-{{- 'gallery.css' | asset_url | stylesheet_tag: preload: true -}}
+{{- 'gallery.css' | asset_url | stylesheet_tag: defer: true -}}
 <div class="gallery full-width--{{ full_width }} gallery-spacing--{{ column_spacing }} text-{{ text_alignment }}{% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--gallery-columns: {{ columns_desktop }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
 	{% render 'section-header', section_heading: section_heading, section_description: section_description %}
 	<div class="gallery__inner">

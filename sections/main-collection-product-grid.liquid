@@ -8,8 +8,8 @@
 	assign products_per_page = section.settings.products_per_page
 	assign columns_desktop = section.settings.columns_desktop
 -%}
-{{- 'product-grid.css' | asset_url | stylesheet_tag: preload: true -}}
-{{- 'facets.css' | asset_url | stylesheet_tag: preload: true -}}
+{{- 'product-grid.css' | asset_url | stylesheet_tag: defer: true -}}
+{{- 'facets.css' | asset_url | stylesheet_tag: defer: true -}}
 {%- paginate collection.products by products_per_page -%}
 	<div class="collection-container section-spacing-bottom collection-container--full-width-{{ full_width }}">
 		{% render 'facets', results: collection, enable_filtering: enable_filtering, enable_sorting: enable_sorting, show_counts: show_counts, filter_color_swatches: filter_color_swatches %}

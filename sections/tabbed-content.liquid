@@ -14,7 +14,7 @@
 	assign disable_top_spacing = section.settings.disable_top_spacing
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 -%}
-{{- 'tabbed-content.css' | asset_url | stylesheet_tag: preload: true -}}
+{{- 'tabbed-content.css' | asset_url | stylesheet_tag: defer: true -}}
 <div class="tabbed-content-wrapper section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg: {{ color_bg }}; --bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}; --color-accent: {{ color_text }}; --color-tabs: {{ color_tabs.rgb | replace: ' ' , ',' }}; --color-border: {{ color_border }};">
 	<div class="row">
 		<div class="small-12 columns">

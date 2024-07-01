@@ -30,7 +30,7 @@
 		endif
 	endif
 -%}
-{{- 'image-with-text.css' | asset_url | stylesheet_tag: preload: true -}}
+{{- 'image-with-text.css' | asset_url | stylesheet_tag: defer: true -}}
 <div class="row{% if full_width %} full-width-row-full{% endif %}">
 	<div class="small-12 columns">
 		<div class="image-with-text grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--bg-body:{{ color_bg }};--color-accent:{{ color_text }};--color-accent-rgb: {{ color_text.rgb | replace: ' ' , ',' }}">

@@ -1,5 +1,5 @@
-{{ 'customer.css' | asset_url | stylesheet_tag: preload: true }}
-{{ 'page-header.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'customer.css' | asset_url | stylesheet_tag: defer: true }}
+{{ 'page-header.css' | asset_url | stylesheet_tag: defer: true }}
 <div class="page-header--wrapper">
 	<div class="row">
 		<div class="small-12 columns">

@@ -1,4 +1,4 @@
-{{ 'article.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'article.css' | asset_url | stylesheet_tag: defer: true }}
 <div class="blog-post-detail--sticky"></div>
 {%- render 'article-navigation', article_show_nav: section.settings.article_show_nav -%}
 <div class="blog-post-detail--offset">

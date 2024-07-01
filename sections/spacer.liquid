@@ -10,7 +10,7 @@
 		assign class = class | append: ' has-border-separator'
 	endif
 -%}
-{{ 'spacer.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'spacer.css' | asset_url | stylesheet_tag: defer: true }}
 <div class="row{% if border_separator_full %} full-width-row-full{%- endif -%}">
 	<div class="small-12 columns">
 		<div class="{{ class }}" style="--spacer-mobile: {{ spacer_mobile | append: 'px' }}; --spacer-desktop: {{ spacer_desktop | append: 'px' }};"></div>

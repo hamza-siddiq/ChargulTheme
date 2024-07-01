@@ -11,7 +11,7 @@
   assign disable_top_spacing = section.settings.disable_top_spacing
   assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 -%}
-{{ 'background-video.css' | asset_url | stylesheet_tag: preload:true }}
+{{ 'background-video.css' | asset_url | stylesheet_tag: defer:true }}
 <background-video class="background-video {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
   {%- if fallback_image != blank -%}
     <div class="background-video__fallback-img">

@@ -29,7 +29,7 @@
 		endif
 	endif
 -%}
-{{ 'page-header.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'page-header.css' | asset_url | stylesheet_tag: defer: true }}
 <div class="page-header--wrapper">
 	<div class="row{% if full_width %} full-width-row-full{% endif %}">
 		<div class="small-12 columns">

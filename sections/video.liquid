@@ -9,7 +9,7 @@
 	assign disable_top_spacing = section.settings.disable_top_spacing
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 -%}
-{{- 'video.css' | asset_url | stylesheet_tag: preload: true -}}
+{{- 'video.css' | asset_url | stylesheet_tag: defer: true -}}
 <div class="video-section full-width--{{ full_width }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
 	<div class="video-section__inner">
 		{% render 'section-header', section_heading: section_heading, section_description: section_description %}
