@@ -15,7 +15,7 @@ var dispatchCustomEvent = function dispatchCustomEvent(eventName) {
   document.dispatchEvent(event);
 };
 
-/**
+/** 
  *  @class
  *  @function Quantity
  */
@@ -124,7 +124,7 @@ if (!customElements.get('product-card')) {
       }
       if (this.secondary) {
         window.addEventListener('load', (event) => {
-          lazySizes.loader.unveil(this.secondary);
+          this.secondary.loading = 'lazy'
         });
       }
     }
@@ -137,7 +137,7 @@ if (!customElements.get('product-card')) {
         window.addEventListener('load', (event) => {
           let image = new Image();
           image.srcset = swatch.dataset.srcset;
-          lazySizes.loader.unveil(image);
+          image.loading = 'lazy'
         });
         swatch.addEventListener('mouseover', () => {
 
