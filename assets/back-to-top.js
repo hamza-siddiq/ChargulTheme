@@ -11,7 +11,7 @@ if (!customElements.get('back-to-top')) {
 
     connectedCallback() {
       this.addEventListener('click', this.onClick);
-      window.addEventListener('scroll', this.checkVisible.bind(this));
+      window.addEventListener('scroll', this.checkVisible.bind(this), { passive: true });
     }
 
     checkVisible(event) {
