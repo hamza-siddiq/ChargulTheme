@@ -21,10 +21,8 @@
 	if desktop_height == 'desktop-height-auto'
 	  assign image_carousel_class = 'adapt-to-content'
 	endif
-	
-	assign sizes = '320x0, 990x0'
   -%}
-  {{- 'image-with-text-slideshow.css' | asset_url | stylesheet_tag: defer: true -}}
+  {{- 'image-with-text-slideshow.css' | asset_url | stylesheet_tag: preload: true -}}
   <div class="row{% if full_width %} full-width-row-full{% endif %} small-12 columns">
 	  <div class="image-with-text-slideshow grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
 		<slide-show class="image-with-text-slideshow__content carousel inner-carousel" data-dots="{{ dots }}" data-autoplay="{{ autoplay }}" data-fade="true">
@@ -50,9 +48,9 @@
 				{% assign image = block.settings.image %}
 				{% if image %}
 				  {% if forloop.first %}
-					{%- render 'responsive-image', image: image, input_sizes: sizes, priority: 'high' -%}
+					{%- render 'responsive-image', image: image, priority: 'high' -%}
 				  {% else %}
-					{%- render 'responsive-image', image: image, size_values: sizes -%}
+					{%- render 'responsive-image', image: image -%}
 				  {% endif %}
 				{% else %}
 				  {%- assign index = forloop.index | modulo: 2 | plus: 1 -%}

@@ -10,178 +10,180 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ dir }}">
 <head>
 	<script>
-		(function() {
-			const SCRIPT_PATTERNS = [
-			  'shopify',
-			  'trekkie',
-			  'storefront',
-			  'tricorder',
-			  'webpixelsmanager',
-			  'checkout-web',
-			  'shop_events_listener',
-			  'customer_area',
-			  'option_selection',
-			  'api.jquery',
-			  'productreviews',
-			  'spr',
-			  'theme.js',
-			  'vendor.js',
-			  'preloads.js',
-			  'b36000b3ew23d1e6a6p45ab3e8bm574dc08dm',
-			  'googletagmanager',
-			  'ChatV1'
-			];
-		  
-			function shouldDeferScript(src) {
-			  return SCRIPT_PATTERNS.some(pattern => src.toLowerCase().includes(pattern));
-			}
-		  
-			function deferScript(scriptElement) {
-			  const src = scriptElement.getAttribute('src');
-			  if (src && shouldDeferScript(src)) {
-				scriptElement.removeAttribute('async');
-				scriptElement.setAttribute('defer', '');
+	(function() {
+		const SCRIPT_PATTERNS = [
+		  'shopify',
+		  'trekkie',
+		  'storefront',
+		  'tricorder',
+		  'webpixelsmanager',
+		  'checkout-web',
+		  'shop_events_listener',
+		  'customer_area',
+		  'option_selection',
+		  'api.jquery',
+		  'productreviews',
+		  'spr',
+		  'theme.js',
+		  'vendor.js',
+		  'preloads.js',
+		  'b36000b3ew23d1e6a6p45ab3e8bm574dc08dm',
+		  'googletagmanager',
+		  'ChatV1'
+		];
+	  
+		function shouldDeferScript(src) {
+		  return SCRIPT_PATTERNS.some(pattern => src.toLowerCase().includes(pattern));
+		}
+	  
+		function deferScript(scriptElement) {
+		  const src = scriptElement.getAttribute('src');
+		  if (src && shouldDeferScript(src)) {
+			scriptElement.removeAttribute('async');
+			scriptElement.setAttribute('defer', '');
+		  }
+		}
+	  
+		function deferPreload(linkElement) {
+		  const href = linkElement.getAttribute('href');
+		  if (href && (href.toLowerCase().includes('tone') || href.toLowerCase().includes('boomerang'))) {
+			linkElement.setAttribute('rel', 'defer');
+		  }
+		}
+	  
+		function handleShopifyAudio(audioElement) {
+		  if (audioElement.src.includes('incoming-message-tone.mp3')) {
+			const audioSrc = audioElement.src;
+			const audioParent = audioElement.parentNode;
+			audioElement.remove();
+	  
+			// Create a custom audio player
+			const customAudio = {
+			  audio: null,
+			  play: function() {
+				if (!this.audio) {
+				  this.audio = new Audio(audioSrc);
+				}
+				this.audio.play();
 			  }
-			}
-		  
-			function deferPreload(linkElement) {
-			  const href = linkElement.getAttribute('href');
-			  if (href && (href.toLowerCase().includes('tone') || href.toLowerCase().includes('boomerang'))) {
-				linkElement.setAttribute('rel', 'defer');
+			};
+	  
+			// Override the global Audio constructor for this specific file
+			const OriginalAudio = window.Audio;
+			window.Audio = function(src) {
+			  if (src === audioSrc) {
+				return customAudio;
 			  }
-			}
-		  
-			function handleShopifyAudio(audioElement) {
-			  if (audioElement.src.includes('incoming-message-tone.mp3')) {
-				const audioSrc = audioElement.src;
-				const audioParent = audioElement.parentNode;
-				audioElement.remove();
-		  
-				// Create a custom audio player
-				const customAudio = {
-				  audio: null,
-				  play: function() {
-					if (!this.audio) {
-					  this.audio = new Audio(audioSrc);
-					}
-					this.audio.play();
-				  }
-				};
-		  
-				// Override the global Audio constructor for this specific file
-				const OriginalAudio = window.Audio;
-				window.Audio = function(src) {
-				  if (src === audioSrc) {
-					return customAudio;
-				  }
-				  return new OriginalAudio(src);
-				};
-		  
-				// Create a MutationObserver to watch for the chat widget
-				const observer = new MutationObserver((mutations) => {
-				  mutations.forEach((mutation) => {
-					if (mutation.addedNodes.length) {
-					  const chatWidget = document.querySelector('[data-chat-widget]');
-					  if (chatWidget) {
-						observer.disconnect();
-						chatWidget.addEventListener('click', () => {
-						  customAudio.play();
-						});
-					  }
-					}
-				  });
-				});
-			  }
-			}
-		  
-			// Process existing script tags
-			document.querySelectorAll('script[src]').forEach(deferScript);
-		  
-			// Process existing preload links
-			document.querySelectorAll('link[rel="preload"]').forEach(deferPreload);
-		  
-			// Process existing audio elements
-			document.querySelectorAll('audio').forEach(handleShopifyAudio);
-		  
-			// Watch for new script tags, preload links, and audio elements
+			  return new OriginalAudio(src);
+			};
+	  
+			// Create a MutationObserver to watch for the chat widget
 			const observer = new MutationObserver((mutations) => {
 			  mutations.forEach((mutation) => {
-				mutation.addedNodes.forEach((node) => {
-				  if (node.nodeType === Node.ELEMENT_NODE) {
-					if (node.tagName === 'SCRIPT') {
-					  deferScript(node);
-					} else if (node.tagName === 'LINK' && node.getAttribute('rel') === 'preload') {
-					  deferPreload(node);
-					} else if (node.tagName === 'AUDIO') {
-					  handleShopifyAudio(node);
-					}
+				if (mutation.addedNodes.length) {
+				  const chatWidget = document.querySelector('[data-chat-widget]');
+				  if (chatWidget) {
+					observer.disconnect();
+					chatWidget.addEventListener('click', () => {
+					  customAudio.play();
+					});
 				  }
-				});
+				}
 			  });
 			});
-		  
-			observer.observe(document.documentElement, {
-			  childList: true,
-			  subtree: true
-			});
-		  })();
-
-		  (function() {
-			// Function to remove Boomerang script
-			function removeBoomerangScript() {
-			  const boomerangScript = document.getElementById('boomr-if-as');
-			  if (boomerangScript) {
-				boomerangScript.remove();
-				console.log('Removed Boomerang script');
-			  }
-			}
-		  
-			// Remove existing Boomerang script
-			removeBoomerangScript();
-		  
-			// Prevent Boomerang script from loading
-			Object.defineProperty(window, 'BOOMR', {
-			  value: {
-				version: '1.0.0',
-				add: function() {},
-				addVar: function() {},
-				init: function() {},
-				subscribe: function() {},
-				sendBeacon: function() {},
-				// Add any other methods that might be called
-			  },
-			  writable: false,
-			  configurable: false
-			});
-		  
-			// Override appendChild to prevent Boomerang script insertion
-			const originalAppendChild = Element.prototype.appendChild;
-			Element.prototype.appendChild = function(child) {
-			  if (child.id === 'boomr-if-as' || (child.src && child.src.includes('boomerang'))) {
-				console.log('Blocked Boomerang script insertion');
-				return child; // Return the child without actually appending it
-			  }
-			  return originalAppendChild.call(this, child);
-			};
-		  
-			// Override insertBefore to prevent Boomerang script insertion
-			const originalInsertBefore = Element.prototype.insertBefore;
-			Element.prototype.insertBefore = function(newNode, referenceNode) {
-			  if (newNode.id === 'boomr-if-as' || (newNode.src && newNode.src.includes('boomerang'))) {
-				console.log('Blocked Boomerang script insertion');
-				return newNode; // Return the newNode without actually inserting it
-			  }
-			  return originalInsertBefore.call(this, newNode, referenceNode);
-			};
-		  })();
-	  </script>
+		  }
+		}
 	  
+		// Process existing script tags
+		document.querySelectorAll('script[src]').forEach(deferScript);
+	  
+		// Process existing preload links
+		document.querySelectorAll('link[rel="preload"]').forEach(deferPreload);
+	  
+		// Process existing audio elements
+		document.querySelectorAll('audio').forEach(handleShopifyAudio);
+	  
+		// Watch for new script tags, preload links, and audio elements
+		const observer = new MutationObserver((mutations) => {
+		  mutations.forEach((mutation) => {
+			mutation.addedNodes.forEach((node) => {
+			  if (node.nodeType === Node.ELEMENT_NODE) {
+				if (node.tagName === 'SCRIPT') {
+				  deferScript(node);
+				} else if (node.tagName === 'LINK' && node.getAttribute('rel') === 'preload') {
+				  deferPreload(node);
+				} else if (node.tagName === 'AUDIO') {
+				  handleShopifyAudio(node);
+				}
+			  }
+			});
+		  });
+		});
+	  
+		observer.observe(document.documentElement, {
+		  childList: true,
+		  subtree: true
+		});
+	  })();
+
+	  (function() {
+		// Function to remove Boomerang script
+		function removeBoomerangScript() {
+		  const boomerangScript = document.getElementById('boomr-if-as');
+		  if (boomerangScript) {
+			boomerangScript.remove();
+			console.log('Removed Boomerang script');
+		  }
+		}
+	  
+		// Remove existing Boomerang script
+		removeBoomerangScript();
+	  
+		// Prevent Boomerang script from loading
+		Object.defineProperty(window, 'BOOMR', {
+		  value: {
+			version: '1.0.0',
+			add: function() {},
+			addVar: function() {},
+			init: function() {},
+			subscribe: function() {},
+			sendBeacon: function() {},
+			// Add any other methods that might be called
+		  },
+		  writable: false,
+		  configurable: false
+		});
+	  
+		// Override appendChild to prevent Boomerang script insertion
+		const originalAppendChild = Element.prototype.appendChild;
+		Element.prototype.appendChild = function(child) {
+		  if (child.id === 'boomr-if-as' || (child.src && child.src.includes('boomerang'))) {
+			console.log('Blocked Boomerang script insertion');
+			return child; // Return the child without actually appending it
+		  }
+		  return originalAppendChild.call(this, child);
+		};
+	  
+		// Override insertBefore to prevent Boomerang script insertion
+		const originalInsertBefore = Element.prototype.insertBefore;
+		Element.prototype.insertBefore = function(newNode, referenceNode) {
+		  if (newNode.id === 'boomr-if-as' || (newNode.src && newNode.src.includes('boomerang'))) {
+			console.log('Blocked Boomerang script insertion');
+			return newNode; // Return the newNode without actually inserting it
+		  }
+		  return originalInsertBefore.call(this, newNode, referenceNode);
+		};
+	  })();
+  </script>
   <meta charset="utf-8">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
   <meta name="theme-color" content="{{ settings.color_body_bg }}">
   <meta name="keywords" content="afghan rugs, hand knotted rugs, wool rugs">
+
+<link rel="preload" href="//www.chargul.com/cdn/fonts/chivo/chivo_n4.bf4dc1c0e4649d2f5a28281870307415c2a9c652.woff2?h1=NDIwN2MxLTIuYWNjb3VudC5teXNob3BpZnkuY29t&h2=Y2hhcmd1bC5jb20&hmac=4e7dc2972b2f24b82ae07d17991e603a1e9be26e4c7522d0f66513f72ed8c27c" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="//www.chargul.com/cdn/fonts/itc_clearface/itcclearface_n7.9f5e17613f1c79bf939e997402c6a337cb5a1918.woff2?h1=NDIwN2MxLTIuYWNjb3VudC5teXNob3BpZnkuY29t&h2=Y2hhcmd1bC5jb20&hmac=d89254dc2292708c0a04b1954b714e26659777a3f08c168b992f6186d5d8e0e2" as="font" type="font/woff2" crossorigin>
   {{ 'app.css' | asset_url | stylesheet_tag: preload: true}}
   <link rel="canonical" href="{{ canonical_url }}">
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -204,7 +206,7 @@
     <meta name="robots" content="noindex nofollow">
   {%- endif -%}
 
-  {% render 'head-preload' %}
+  {% section 'head-preload' %}
   {% render 'social-meta-tags' %}
   {% render 'head-variables' %}
 
