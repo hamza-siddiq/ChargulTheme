@@ -30,7 +30,7 @@
 					{% if block.settings.image != blank %}
 						{% assign image = block.settings.image %}
 						{% assign master_width = image.src.width | append: 'x' | append: image.src.height %}
-						{%- render 'responsive-image', image: image, retina: block.settings.retina -%}
+						{%- render 'responsive-image', image: image, input_sizes: master_width, retina: block.settings.retina -%}
 					{% endif %}
 					{% if block.settings.text != blank %}
 						<div class="rte">

@@ -53,7 +53,7 @@
 					-%}
 					<figure class="aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
 						{% if block.settings.image %}
-							{%- render 'responsive-image', image: block.settings.image, priority:'high' -%}
+							{%- render 'responsive-image', image: block.settings.image, input_sizes: '320x0,640x0' -%}
 						{% else %}
 							{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
 						{% endif %}

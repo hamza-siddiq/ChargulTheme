@@ -64,13 +64,13 @@
               {%- render 'responsive-image',
                 class: 'product-secondary-image',
                 image: product_card_product.images[1],
-                sizes: sizes,
+                input_sizes: sizes,
                 priority: 'low'
               -%}
             {%- endif %}
           {%- endif -%}
           {%- if featured_media -%}
-            {%- render 'responsive-image', class: 'product-primary-image', image: featured_media, sizes: sizes -%}
+            {%- render 'responsive-image', class: 'product-primary-image', image: featured_media, input_sizes: sizes -%}
           {%- else -%}
             <div class="thb-placeholder">
               {{ 'product-1' | placeholder_svg_tag }}
@@ -156,7 +156,7 @@
         </h3>
       {% endif %}
       {% render 'product-price', product: product_card_product %}
-      {% render 'product-card-swatch', product: product_card_product, sizes: sizes %}
+      {% render 'product-card-swatch', product: product_card_product, input_sizes: sizes %}
       {%- if settings.show_products_rating and product_card_product.metafields.reviews.rating.value != blank -%}
         <div
           class="star-rating"

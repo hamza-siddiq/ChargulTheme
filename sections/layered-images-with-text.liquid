@@ -47,7 +47,7 @@
 										assign master_width = image.src.width | append: 'x' | append: image.src.height
 										assign width = '345x' | append: mobile_image_height | append: ',' | append: master_width
 
-										render 'responsive-image', image: image, sizes: width
+										render 'responsive-image', image: image, input_sizes: width
 									 -%}
 								{%- else -%}
 									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
@@ -62,7 +62,7 @@
 										assign master_width = image_2.src.width | append: 'x' | append: image_2.src.height
 										assign width = '345x' | append: mobile_image_height | append: ',' | append: master_width
 
-										render 'responsive-image', image: image_2, sizes: width
+										render 'responsive-image', image: image_2, input_sizes: width
 									 -%}
 								{%- else -%}
 									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
@@ -77,7 +77,7 @@
 										assign master_width = image_3.src.width | append: 'x' | append: image_3.src.height
 										assign width = '345x' | append: mobile_image_height | append: ',' | append: master_width
 
-										render 'responsive-image', image: image_3, sizes: width
+										render 'responsive-image', image: image_3, input_sizes: width
 									 -%}
 								{%- else -%}
 									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}

@@ -24,7 +24,7 @@
 										<div class="product-cart-item">
 											<div class="product-cart-item-image">
 												{% if item.image %}
-													{%- render 'responsive-image', image: item.image, sizes: '168x0' -%}
+													{%- render 'responsive-image', image: item.image, input_sizes: '168x0' -%}
 												{% else %}
 													<div class="thb-placeholder" style="width: 100px;">
 														{{ 'product-1' | placeholder_svg_tag }}

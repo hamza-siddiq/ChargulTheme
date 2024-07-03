@@ -217,7 +217,7 @@
                 <div class="product-cart-item-image">
                   <a href="{{ product.url }}" title="{{ product.title | escape }}" class="cart-product-link">
                     {% if product.featured_media %}
-                      {%- render 'responsive-image', image: product.featured_media, sizes: '128x0' -%}
+                      {%- render 'responsive-image', image: product.featured_media, input_sizes: '128x0' -%}
                     {% else %}
                       <div class="thb-placeholder" style="width: 64px;">
                         {{ 'product-1' | placeholder_svg_tag }}
@@ -243,7 +243,7 @@
           {%- liquid
             assign image = block.settings.image
             assign sizes = image.src.width | append: 'x' | append: image.src.height
-            render 'responsive-image', image: image, sizes: sizes
+            render 'responsive-image', image: image, input_sizes: sizes
           -%}
         {%- else -%}
           <div class="thb-placeholder">

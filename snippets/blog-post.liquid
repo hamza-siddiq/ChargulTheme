@@ -24,7 +24,7 @@
 	<figure class="featured-image aspect-ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
 		<a href="{{ article.url }}" title="{{ article.title | escape }}">
 			{%- if article.image -%}
-				{%- render 'responsive-image', image: article.image, sizes: image_sizes -%}
+				{%- render 'responsive-image', image: article.image, input_sizes: image_sizes -%}
 			{%- endif -%}
 		</a>
 	</figure>

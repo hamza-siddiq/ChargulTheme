@@ -54,7 +54,7 @@
 									assign class = 'before-after-image--desktop'
 								endif
 							 -%}
-							{%- render 'responsive-image', image: image, class: class -%}
+							{%- render 'responsive-image', image: image, input_sizes: width, class: class -%}
 						{%- else -%}
 							<div class="thb-placeholder">
 								{{ 'collection-' | append: forloop.index | placeholder_svg_tag: 'placeholder_svg_tag' }}
@@ -66,7 +66,7 @@
 								assign master_width = image.src.width | append: 'x' | append: image.src.height
 								assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
 							 -%}
-							{%- render 'responsive-image', image: image, class: 'before-after-image--mobile' -%}
+							{%- render 'responsive-image', image: image, input_sizes: width, class: 'before-after-image--mobile' -%}
 						{%- endif -%}
 					</div>
 					<div class="before-after-image--content before-after-image--content-{{ heading_position }}">

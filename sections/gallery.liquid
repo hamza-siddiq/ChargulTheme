@@ -34,7 +34,7 @@
 									assign sizes = sizes | append: ',1250x0'
 							endif
 						-%}
-						{%- render 'responsive-image', image: block.settings.image -%}
+						{%- render 'responsive-image', image: block.settings.image, input_sizes: sizes -%}
 					{% else %}
 						{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
 					{% endif %}

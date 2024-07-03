@@ -20,7 +20,7 @@
 				{% assign small_width = image.src.height | times: '320' | divided_by: image.src.width %}
 				{% assign master_width = image.src.height | append: 'x' | append: image.src.width %}
 				{% assign width = '640x' | append: small_width | append: ',' | append: master_width %}
-				{% render 'responsive-image', image: image, sizes: width %}
+				{% render 'responsive-image', image: image, input_sizes: width %}
 			{% else %}
 				{{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder_svg_tag' }}
 			{% endif %}

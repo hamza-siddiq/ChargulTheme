@@ -15,7 +15,7 @@
 						{%- liquid
 							assign image = block.settings.image
 							assign master_width = image.src.width | append: 'x' | append: image.src.height
-							render 'responsive-image', image: image, sizes: master_width, retina: true
+							render 'responsive-image', image: image, input_sizes: master_width, retina: true
 						-%}
 					{%- else -%}
 						<div class="thb-placeholder">

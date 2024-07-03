@@ -29,7 +29,7 @@
 								{% assign image = block.settings.image %}
 								{% assign master_width = image.src.width | append: 'x' | append: image.src.height %}
 								{% assign width = '375x500' | append: ',' | append: master_width %}
-								{%- render 'responsive-image', image: image, sizes: width, retina: block.settings.retina -%}
+								{%- render 'responsive-image', image: image, input_sizes: width, retina: block.settings.retina -%}
 							{% else %}
 								{{ block.settings.author }}
 							{% endif %}

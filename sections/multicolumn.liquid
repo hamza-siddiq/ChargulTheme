@@ -34,7 +34,7 @@
 							endif
 						-%}
 						<figure class="multicolumn__image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
-							{%- render 'responsive-image', image: block.settings.image, sizes: '407x0,814x0' -%}
+							{%- render 'responsive-image', image: block.settings.image, input_sizes: '407x0,814x0' -%}
 						</figure>
 					{% endif %}
 					{% if block.settings.title != blank %}

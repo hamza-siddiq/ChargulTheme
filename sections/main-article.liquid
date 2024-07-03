@@ -25,7 +25,7 @@
                       assign sizes = '375x230,750x460,1060x650'
                   endcase
                 -%}
-                {%- render 'responsive-image', image: article.image, sizes: sizes, priority: 'high' -%}
+                {%- render 'responsive-image', image: article.image, input_sizes: sizes, priority: 'high' -%}
               </div>
             {% endif %}
             {% if block.type == 'title' %}

@@ -62,14 +62,14 @@
 							assign class = 'countdown-image--desktop'
 						endif
 					 -%}
-					{%- render 'responsive-image', image: bg_image,  class: class -%}
+					{%- render 'responsive-image', image: bg_image, input_sizes: width, class: class -%}
 				{%- endif -%}
 				{%- if bg_mobile_image -%}
 					{%- liquid
 						assign master_width = bg_mobile_image.src.width | append: 'x' | append: bg_mobile_image.src.height
 						assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
 					 -%}
-					{%- render 'responsive-image', image: bg_mobile_image, class: 'countdown-image--mobile' -%}
+					{%- render 'responsive-image', image: bg_mobile_image, input_sizes: width, class: 'countdown-image--mobile' -%}
 				{%- endif -%}
 				<div class="countdown-banner--bg--overlay" style="--overlay-color: {{ overlay_color }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.00 }};"></div>
 			</div>

@@ -31,7 +31,7 @@
 						<div class="product-cart-item">
 							<div class="product-cart-item-image">
 								{% if predictive_article.image %}
-									{%- render 'responsive-image', image: predictive_article.image, sizes: '150x0' -%}
+									{%- render 'responsive-image', image: predictive_article.image, input_sizes: '150x0' -%}
 								{% else %}
 									<div class="thb-placeholder" style="width: 75px; height:75px;">
 										{{ 'image' | placeholder_svg_tag }}

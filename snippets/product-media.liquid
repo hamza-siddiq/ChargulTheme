@@ -59,7 +59,7 @@
           aria-label="Zoom"
         >{% render 'svg-icons' with 'zoom' %}</a>
         {%- endif -%}
-        {%- render 'responsive-image', image: media.preview_image, sizes: sizes, priority: priority -%}
+        {%- render 'responsive-image', image: media.preview_image, input_sizes: sizes, priority: priority -%}
       </div>
     {% when 'external_video' %}
       <div class="product-single__media product-single__media-external-video" data-provider="{{ media.host }}" data-media-id="{{ media.id }}" id="Slide-Thumbnails-{{ section.id }}-{{ media.id }}" style="--aspect-ratio: {{ media.aspect_ratio }}">

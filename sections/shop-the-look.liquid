@@ -18,7 +18,7 @@
 					{% assign small_height = image_mobile.src.height | times: '750' | divided_by: image_mobile.src.width %}
 					{% assign master_width = image_mobile.src.width | append: 'x' | append: image_mobile.src.height %}
 					{% assign sizes = '750x' | append: small_height | append: ',' | append: master_width %}
-					{% render 'responsive-image', image: image_mobile, sizes: sizes %}
+					{% render 'responsive-image', image: image_mobile, input_sizes: sizes %}
 				{%- else -%}
 					<div class="thb-placeholder">
 						{{ 'collection-1' | placeholder_svg_tag }}
