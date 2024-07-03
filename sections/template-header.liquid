@@ -36,7 +36,7 @@
 			<div class="page-header {% if bg_image %}page-header__has-bg{% endif %}">
 				{% if bg_image %}
 				<div class="page-header__bg" style="--overlay-opacity: {{ overlay_opacity | divided_by: 100.00 }}">
-					{%- render 'responsive-image', image: bg_image, input_sizes: '80x0,160x0', priority: 'high' -%}
+					{%- render 'responsive-image', image: bg_image, image_sizes: '160x0,320x0', priority: 'high' -%}
 				</div>
 				{% endif %}
 				<div class="page-header__inner">

@@ -1,10 +1,8 @@
 {%- liquid
 	
+	assign sizes = '320x0,920x0'
 	if input_sizes
 		assign sizes = input_sizes
-	else
-		assign sizes = '320x0,920x0'
-	endif
 	
 	assign image_sizes = sizes | split: ","
 	
@@ -74,14 +72,15 @@
 	endif
   -%}
   
-  <img
-	preload
-    class="{{ class | escape }}{% if retina %} retina_size{% endif %}"
-    width="{{ w }}"
-    height="{{ h }}"
-    sizes="(max-width: 767px) 50vw, 100vw"
-    src="{{ image | image_url: width: first_width, height: first_height, crop: 'center' }}"
-    srcset="{{ srcset | slice: 0, l | strip_newlines -}}"
-    alt="{{ image.alt | escape }}"
-    {% if focal_point -%}style="object-position: {{ focal_point }};"{% endif %}
+<img
+	class="{{ class | escape }}{% if retina %} retina_size{% endif %}"
+	width="{{ w }}"
+	height="{{ h }}"
+	sizes="(max-width: 767px) 50vw, 100vw"
+	src="{{ image | image_url: width: first_width, height: first_height, crop: 'center' }}"
+	srcset="{{ srcset | slice: 0, l | strip_newlines -}}"
+	fetchpriority="{{ fetchpriority }}"
+	loading= "{{ loading  }}"
+	alt="{{ image.alt | escape }}"
+	{% if focal_point -%}style="object-position: {{ focal_point }};"{% endif %}
 >

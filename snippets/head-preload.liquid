@@ -1,0 +1,20 @@
+{% if template contains 'product' -%}
+	<link href="{{ 'product.css' | asset_url }}">
+{% liquid
+	if product.selected_or_first_available_variant.featured_media.preview_image
+		assign image = product.selected_or_first_available_variant.featured_media.preview_image
+		render 'responsive-preload', image: image, sizes: '375x0,580x0,1160x0'
+	endif
+-%}
+{%- endif %}
+{% if template contains 'collection' -%}
+{% liquid
+	if collection.featured_image
+		assign image = collection.featured_image
+		assign small_width = image.src.height | times: '375' | divided_by: image.src.width
+		assign master_width = image.src.width | append: 'x' | append: image.src.height
+		assign sizes = '375x' | append: small_width | append: ',' | append: master_width
+		render 'responsive-preload', image: image, sizes: sizes
+	endif
+-%}
+{%- endif %}
