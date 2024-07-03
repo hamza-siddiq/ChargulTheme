@@ -6,10 +6,15 @@
 	endif
 	
 	assign image_sizes = sizes | split: ","
-	
-	if priority
-	  assign fetchpriority = priority
-	  assign loading = 'eager'
+
+	assign image_above_fold = false
+	if image.position.y <= window_height
+		assign image_above_fold = true
+	endif
+
+	if image_above_fold == true
+	  assign fetchpriority = 'high'
+	  loading = 'eager'
 	else
 	  assign fetchpriority = 'auto'
 	  assign loading = 'lazy'

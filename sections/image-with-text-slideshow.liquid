@@ -21,8 +21,6 @@
 	if desktop_height == 'desktop-height-auto'
 	  assign image_carousel_class = 'adapt-to-content'
 	endif
-	
-	assign sizes = '320x0, 990x0'
   -%}
   {{- 'image-with-text-slideshow.css' | asset_url | stylesheet_tag: defer: true -}}
   <div class="row{% if full_width %} full-width-row-full{% endif %} small-12 columns">
@@ -52,7 +50,7 @@
 					{% assign master_width = image.src.width | append: 'x' | append: image.src.height %}
 					{% assign width = '375x0' | append: ',' | append: master_width %}
 						{% if forloop.first %}
-						  {%- render 'responsive-image', image: image, input_sizes: width, priority: 'high' -%}
+						  {%- render 'responsive-image', image: image, input_sizes: width -%}
 						{% else %}
 						  {%- render 'responsive-image', image: image, input_sizes: width -%}
 						{% endif %}
