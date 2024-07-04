@@ -1,1 +1,69 @@
-{"sections":{"1652081672ff9b3c2c":{"type":"map","blocks":{"16520816724be18f71-0":{"type":"pin","settings":{"pin_retina":true,"pin_lat":"33.9787261","pin_long":"-118.4197832","pin_title":"","pin_desc":""}}},"block_order":["16520816724be18f71-0"],"settings":{"googlemaps_api_key":"","image":"shopify:\/\/shop_images\/hand-knotted-edge-of-a-yellow-and-white-afghan-rug.jpg","desktop_height":"desktop-height-550","mobile_height":"mobile-height-400","map_type":"roadmap","map_style_select":"default","map_zoom":11,"disable_top_spacing":true,"disable_bottom_spacing":true}},"template-header":{"type":"template-header","settings":{"full_width":true,"overlay_opacity":30,"show_subcollections":true,"display_description":true}},"1652268757b7c53383":{"type":"contact-form","blocks":{"165226875777ee1cd4-0":{"type":"text","settings":{"heading":"Chargul","text":"<p>San Fransisco, CA 94105<\/p>"}}},"block_order":["165226875777ee1cd4-0"],"settings":{"heading":"Contact form","description":"","show_phone_number":true,"disable_top_spacing":false,"disable_bottom_spacing":false}}},"order":["1652081672ff9b3c2c","template-header","1652268757b7c53383"]}
+{
+  "sections": {
+    "1652081672ff9b3c2c": {
+      "type": "map",
+      "blocks": {
+        "16520816724be18f71-0": {
+          "type": "pin",
+          "settings": {
+            "pin_retina": true,
+            "pin_lat": "33.9787261",
+            "pin_long": "-118.4197832",
+            "pin_title": "",
+            "pin_desc": ""
+          }
+        }
+      },
+      "block_order": [
+        "16520816724be18f71-0"
+      ],
+      "settings": {
+        "googlemaps_api_key": "",
+        "image": "shopify:\/\/shop_images\/hand-knotted-edge-of-a-yellow-and-white-afghan-rug.jpg",
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-400",
+        "map_type": "roadmap",
+        "map_style_select": "default",
+        "map_zoom": 11,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "template-header": {
+      "type": "template-header",
+      "settings": {
+        "full_width": true,
+        "overlay_opacity": 30,
+        "show_subcollections": true,
+        "display_description": true
+      }
+    },
+    "1652268757b7c53383": {
+      "type": "contact-form",
+      "blocks": {
+        "165226875777ee1cd4-0": {
+          "type": "text",
+          "settings": {
+            "heading": "Chargul",
+            "text": "<p>San Fransisco, CA 94105<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "165226875777ee1cd4-0"
+      ],
+      "settings": {
+        "heading": "Contact form",
+        "description": "",
+        "show_phone_number": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "1652081672ff9b3c2c",
+    "template-header",
+    "1652268757b7c53383"
+  ]
+}

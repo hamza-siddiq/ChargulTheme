@@ -44,7 +44,7 @@
         "mobile_height": "mobile-height-350",
         "desktop_height": "desktop-height-650",
         "desktop_image_width": "large",
-        "layout": "text_first",
+        "layout": "image_first",
         "content_position": "text-left",
         "full_width": true,
         "autoplay": true,

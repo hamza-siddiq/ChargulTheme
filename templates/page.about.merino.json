@@ -19,51 +19,85 @@
         "text": "",
         "video": "",
         "video_hosted": "shopify:\/\/files\/videos\/afghan-man-walking-on-a-large-afghan-rug.mp4",
+        "fallback_image": "shopify:\/\/shop_images\/afghan-man-walking-on-a-large-afghan-rug-image.jpg",
         "button_text": "",
         "overlay_opacity": 25,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
     },
-    "image_with_text_slideshow_xf7R84": {
-      "type": "image-with-text-slideshow",
+    "image_with_text_x8HpNp": {
+      "type": "image-with-text",
       "blocks": {
-        "slide_EE6QGb": {
-          "type": "slide",
+        "heading_ykUYKw": {
+          "type": "heading",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hamza-biking-in-san-francisco.jpg",
-            "heading": "The Chargul Origin Story",
-            "content": "Founded in 2023 by brothers Hamza and Emad, Chargul is a family-owned company dedicated to promoting cultural exchange and preserving the art of traditional Afghan rug weaving. While working in the tech industry, their passion for curating antique textiles and deep respect for specialized handiwork led them to create Chargul. Our mission is to raise cultural awareness of global artisanship, foster direct relationships with our skilled weavers, and bring the beauty of authentic Afghan rugs into American homes.",
-            "button_text": "Shop Now",
-            "button_link": ""
+            "text": "The Chargul Origin Story",
+            "heading_size": "h3"
           }
         },
-        "slide_KTcccg": {
-          "type": "slide",
+        "text_xDYb9R": {
+          "type": "text",
           "settings": {
-            "image": "shopify:\/\/shop_images\/emad-biking-in-san-francisco.jpg",
-            "heading": "Our Commitment to Quality and Ethics",
-            "content": "With the help of friends and family, we personally source each handcrafted Afghan rug, guaranteeing that our products are ethically made, climate-friendly, and directly benefit the artisans. We take great pride in owning all parts of our supply chain, from the first threads to your doorstep, ensuring that the best sustainable craftsmanship reaches your home. Feel free to contact us to learn more about our commitment to quality, authenticity, and ethical sourcing of these magnificent Afghan rugs.",
-            "button_text": "Shop Now",
-            "button_link": ""
+            "text": "<p>Founded in 2023 by brothers Hamza and Emad, Chargul is a family-owned company dedicated to promoting cultural exchange and preserving the art of traditional Afghan rug weaving. While working in the tech industry, their passion for curating antique textiles and deep respect for specialized handiwork led them to create Chargul. Our mission is to raise cultural awareness of global artisanship, foster direct relationships with our skilled weavers, and bring the beauty of authentic Afghan rugs into American homes.<\/p>"
           }
         }
       },
       "block_order": [
-        "slide_EE6QGb",
-        "slide_KTcccg"
+        "heading_ykUYKw",
+        "text_xDYb9R"
       ],
       "settings": {
-        "mobile_height": "mobile-height-350",
-        "desktop_height": "desktop-height-650",
+        "image": "shopify:\/\/shop_images\/hamza-biking-in-san-francisco.jpg",
+        "use_video": false,
+        "video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "video_autoplay": true,
+        "height": "adapt",
         "desktop_image_width": "medium",
-        "layout": "text_first",
+        "layout": "image_first",
         "content_position": "text-left",
         "full_width": false,
-        "autoplay": true,
-        "autoplay_length": 5,
+        "color_bg": "#ffffff",
+        "color_text": "#103a3a",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": true
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_gWmeLd": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_JtiQ4d": {
+          "type": "heading",
+          "settings": {
+            "text": "Our Commitment to Quality and Ethics",
+            "heading_size": "h3"
+          }
+        },
+        "text_7Qcg9x": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With the help of friends and family, we personally source each handcrafted Afghan rug, guaranteeing that our products are ethically made, climate-friendly, and directly benefit the artisans. We take great pride in owning all parts of our supply chain, from the first threads to your doorstep, ensuring that the best sustainable craftsmanship reaches your home. Feel free to contact us to learn more about our commitment to quality, authenticity, and ethical sourcing of these magnificent Afghan rugs.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JtiQ4d",
+        "text_7Qcg9x"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/emad-biking-in-san-francisco.jpg",
+        "use_video": false,
+        "video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "video_autoplay": true,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "content_position": "text-left",
+        "full_width": false,
+        "color_bg": "#ffffff",
+        "color_text": "#103a3a",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
       }
     },
     "44591651-9ded-46de-9d9e-d5b49f3d07a3": {
@@ -223,7 +257,8 @@
   "order": [
     "template-header",
     "background_video_ENHKDL",
-    "image_with_text_slideshow_xf7R84",
+    "image_with_text_x8HpNp",
+    "image_with_text_gWmeLd",
     "44591651-9ded-46de-9d9e-d5b49f3d07a3",
     "2de833b4-ad01-4886-9e52-c1c0482d15e0",
     "63f19bba-db6e-43b4-94f0-7b38720780ea",
