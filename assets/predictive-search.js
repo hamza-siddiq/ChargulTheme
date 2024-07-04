@@ -21,7 +21,7 @@ class PredictiveSearch {
 
     this.input.addEventListener('input', debounce((event) => {
       this.onChange(event);
-    }, 200).bind(this));
+    }, 300).bind(this));
 
     this.button.addEventListener('click', (event) => {
       var _this = this;
@@ -150,9 +150,7 @@ class PredictiveSearch {
     document.querySelector('.header-section').classList.remove('search-open');
   }
 }
-
-// Initialize PredictiveSearch when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   if (typeof PredictiveSearch !== 'undefined') {
     new PredictiveSearch();
   }
