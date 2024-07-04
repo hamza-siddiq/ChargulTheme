@@ -1,49 +1,22 @@
 {%- if product_card_product and product_card_product != empty -%}
-  {% liquid
-    assign featured_media = product_card_product.featured_media
-    assign product_aspect_ratio = settings.product_aspect_ratio
-    assign ratio = 1
+	{% liquid
+		assign featured_media = product_card_product.featured_media
+		assign product_aspect_ratio = settings.product_aspect_ratio
+		assign ratio = 1
 
     if featured_media.media_type != 'image'
       assign featured_media = featured_media.preview_image
     endif
 
-    assign sizes = '345x345,596x596'
-    if product_aspect_ratio == 'adapt'
-      assign ratio = product_card_product.featured_media.aspect_ratio
-      assign sizes = '345x0,596x0'
-    elsif product_aspect_ratio == 'portrait'
-      assign ratio = 0.8
-      assign sizes = '345x430,596x700'
-    endif
-
-    assign valid_sizes = ''
-  %}
-  {% assign size_array = sizes | split: ',' %}
-  {% for size in size_array %}
-    {% liquid
-      assign width_height = size | split: 'x'
-      assign width = width_height[0]
-      assign height = width_height[1]
-      if height == '0' or height == 0
-        assign height = width | divided_by: ratio | round
-        if height < 1
-          assign height = 1
-        elsif height > 5760
-          assign height = 5760
-        endif
-      endif
-      assign valid_size = width | append: 'x' | append: height
-      assign valid_sizes = valid_sizes | append: valid_size
-      if forloop.last == false
-        assign valid_sizes = valid_sizes | append: ','
-      endif
-    %}
-  {% endfor %}
-
-  {% liquid
-    assign sizes = valid_sizes
-    assign product_content_alignment = settings.product_content_alignment
+		assign sizes = '345x345,596x596'
+		if product_aspect_ratio == 'adapt'
+			assign ratio = product_card_product.featured_media.aspect_ratio
+			assign sizes = '345x0,596x0'
+		elsif product_aspect_ratio == 'portrait'
+			assign ratio = 0.8
+			assign sizes = '345x430,596x700'
+		endif
+		assign product_content_alignment = settings.product_content_alignment
 
     assign is_purchasable = false
     if product_card_product.available and product_card_product.variants.size == 1
