@@ -6,10 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="theme-color" content="{{ settings.color_body_bg }}">
-		{% if template contains 'collection' and current_tags %} <link
-			rel="canonical" href="{{ shop.url }}{{ collection.url }}" />
-			{% else %} <link rel="canonical" href="{{ canonical_url }}"
-			/> {% endif %}
+    <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
     {%- if settings.favicon != blank -%}
