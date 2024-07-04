@@ -5,7 +5,7 @@ Compass Mixins
 /*------------------------------------------------------------------
 Variables
 */
-.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .product-popup-modal {
+.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .clipboard--bubble, .product-popup-modal {
   transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
 
 .no-js .flickity-nav {
@@ -294,7 +294,7 @@ Compass Mixins
 /*------------------------------------------------------------------
 Variables
 */
-.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .product-popup-modal {
+.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .clipboard--bubble, .product-popup-modal {
   transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
 
 .no-js .flickity-nav {
@@ -425,7 +425,7 @@ Compass Mixins
 /*------------------------------------------------------------------
 Variables
 */
-.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .product-popup-modal {
+.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .clipboard--bubble, .product-popup-modal {
   transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
 
 .no-js .flickity-nav {
@@ -579,7 +579,7 @@ Compass Mixins
 /*------------------------------------------------------------------
 Variables
 */
-.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .product-popup-modal {
+.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .clipboard--bubble, .product-popup-modal {
   transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
 
 .no-js .flickity-nav {
@@ -861,7 +861,7 @@ Compass Mixins
 /*------------------------------------------------------------------
 Variables
 */
-.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .product-popup-modal {
+.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .clipboard--bubble, .product-popup-modal {
   transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
 
 .no-js .flickity-nav {
@@ -931,6 +931,7 @@ Utilities
 Share
 */
 .share-article {
+  display: block;
   font-size: 0.8125rem;
   line-height: 1;
   margin-bottom: 25px; }
@@ -947,6 +948,36 @@ Share
     white-space: nowrap; }
     [dir="rtl"] .share-article a {
       margin: 0 0 0 25px; }
+
+.clipboard {
+  position: relative; }
+  .clipboard--bubble {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 6px);
+    transform: translateX(-50%);
+    background-color: var(--color-accent);
+    color: var(--bg-body);
+    white-space: nowrap;
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    border-radius: 1px;
+    opacity: 0;
+    pointer-events: none;
+    line-height: 1.25; }
+    .clipboard--bubble:after {
+      content: '';
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 3px 2.5px 0 2.5px;
+      border-color: var(--color-accent) transparent transparent transparent;
+      transform: translateX(-2.5px);
+      position: absolute;
+      bottom: -3px;
+      left: 50%; }
+  .clipboard-success .clipboard--bubble {
+    opacity: 1; }
 
 /*------------------------------------------------------------------
 Popup
@@ -1220,7 +1251,7 @@ Compass Mixins
 /*------------------------------------------------------------------
 Variables
 */
-.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .product-popup-modal {
+.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .clipboard--bubble, .product-popup-modal {
   transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
 
 .no-js .flickity-nav {
@@ -1293,7 +1324,7 @@ Compass Mixins
 /*------------------------------------------------------------------
 Variables
 */
-.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .product-popup-modal {
+.shopify-payment-button__button:not(.shopify-payment-button__button--branded):before, .shopify-payment-button__button.shopify-payment-button__button--branded .shopify-cleanslate div[role="button"]:before, .variations input[type="radio"] + label:before, .variations .product-form__input--color input[type="radio"] + label, .variations .product-form__input--siblings label, .variations .product-form__input--siblings label:after, .variations .product-form__input--siblings label:before, .flickity-nav, .thb-product-detail .product-single__media-zoom svg, .clipboard--bubble, .product-popup-modal {
   transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
 
 .no-js .flickity-nav {
