@@ -1,16 +1,20 @@
+{{ 'product.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign first_3d_model = product.media | where: "media_type", "model" | first
   assign thumbnail_position = section.settings.thumbnail_position
 	assign full_width = section.settings.full_width
 	assign hide_variants = section.settings.hide_variants
 	assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
+
 	assign featured_media = product.selected_or_first_available_variant.featured_media
+
 	assign sizes = '375x0,580x0,1160x0'
+
 	if full_width
 		assign sizes = sizes | append: ',1600x'
 	endif
+
 -%}
-{{ 'product.css' | asset_url | stylesheet_tag: defer: true }}
 {%- if first_3d_model -%}
   <link id="ModelViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
   <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'product-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -60,7 +64,6 @@
     </div>
   </div>
 </div>
-
 {% assign popups = section.blocks | where: "type", "popup" %}
 {%- for block in popups -%}
   <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
@@ -79,18 +82,9 @@
 {%- endfor -%}
 
 {%- if section.settings.lightbox != blank -%}
-  {% render 'photoswipe' %}
+{% render 'photoswipe' %}
 <link rel="stylesheet" href="{{ 'photoswipe.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
-
-{%- liquid
-  if product.selected_or_first_available_variant.featured_media
-    assign seo_media = product.selected_or_first_available_variant.featured_media
-  else
-    assign seo_media = product.featured_media
-  endif
--%}
-
 <script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
 
 {%- if first_3d_model -%}
@@ -100,6 +94,10 @@
 
   <script src="{{ 'product-model.js' | asset_url }}" defer></script>
 {%- endif -%}
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
 
 {% schema %}
 {
