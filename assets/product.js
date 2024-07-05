@@ -433,18 +433,29 @@ if (!customElements.get('product-slider')) {
   class ProductSlider extends HTMLElement {
     constructor() {
       super();
-
       this.addEventListener('change', this.setupProductGallery);
     }
+
     connectedCallback() {
       this.product_container = this.closest('.thb-product-detail');
       this.thumbnail_container = this.product_container.querySelector('.product-thumbnail-container');
       this.video_containers = this.querySelectorAll('.product-single__media-external-video--play');
 
       this.setOptions();
-      // Start Slider
-      this.init();
+      
+      this.initWhenFlickityAvailable();
     }
+
+    initWhenFlickityAvailable() {
+      if (typeof Flickity === 'undefined') {
+        window.addEventListener('flickity:available', () => {
+          this.init();
+        }, { once: true });
+      } else {
+        this.init();
+      }
+    }
+    
     setOptions() {
       this.hide_variants = this.dataset.hideVariants == 'true';
       if (this.thumbnail_container) {
@@ -472,56 +483,33 @@ if (!customElements.get('product-slider')) {
     }
     init() {
       this.flkty = new Flickity(this, this.options);
-
       this.selectedIndex = this.flkty.selectedIndex;
-
-      // Setup Events
       this.setupEvents();
-
-      // Start Gallery
       this.setupProductGallery();
+      // Set initiated flag
+      this.dataset.initiated = 'true';
     }
     reInit() {
-      this.flkty.destroy();
-
+      if (this.flkty) {
+        this.flkty.destroy();
+      }
       this.setOptions();
-
-      this.flkty = new Flickity(this, this.options);
-
-      // Setup Events
-      this.setupEvents();
-
-      this.selectedIndex = this.flkty.selectedIndex;
+      this.init();
     }
     setupEvents() {
       const _this = this;
+      // Modified: Simplified event listeners for prev/next buttons
       if (this.prev_button) {
-        let prev = this.prev_button.cloneNode(true);
-        this.prev_button.parentNode.append(prev);
-        this.prev_button.remove();
-        prev.addEventListener('click', (event) => {
-          this.flkty.previous();
-        });
-        prev.addEventListener('keyup', (event) => {
-          this.flkty.previous();
-          event.preventDefault();
-        });
+        this.prev_button.addEventListener('click', () => this.flkty.previous());
       }
       if (this.next_button) {
-        let next = this.next_button.cloneNode(true);
-        this.next_button.parentNode.append(next);
-        this.next_button.remove();
-        next.addEventListener('click', (event) => {
-          this.flkty.next();
-        });
-        next.addEventListener('keyup', (event) => {
-          this.flkty.next();
-          event.preventDefault();
-        });
+        this.next_button.addEventListener('click', () => this.flkty.next());
       }
+
       this.flkty.on('settle', function (index) {
         _this.selectedIndex = index;
       });
+
       this.flkty.on('change', (index) => {
 
         let previous_slide = this.flkty.cells[_this.selectedIndex].element,
@@ -582,24 +570,24 @@ if (!customElements.get('product-slider')) {
       });
 
       if (this.thumbnail_container) {
-        setTimeout(() => {
-          let active_thumbs = Array.from(this.thumbnails).filter(element => element.clientWidth > 0);
-          active_thumbs.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', () => {
-              this.thumbnailClick(thumbnail, index);
-            });
-          });
-        });
+        this.setupThumbnails();
       }
-      let scrollbar = document.querySelector('.product-quick-images__scrollbar>div');
 
+      let scrollbar = document.querySelector('.product-quick-images__scrollbar>div');
       if (scrollbar) {
         this.flkty.on('scroll', function (progress) {
           progress = Math.max(0, Math.min(1, progress));
           scrollbar.style.transform = 'scaleX(' + progress + ')';
         });
       }
-
+    }
+    setupThumbnails() {
+      let active_thumbs = Array.from(this.thumbnails).filter(element => element.clientWidth > 0);
+      active_thumbs.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+          this.thumbnailClick(thumbnail, index);
+        });
+      });
     }
     thumbnailClick(thumbnail, index) {
       [].forEach.call(this.thumbnails, function (el) {

@@ -268,5 +268,28 @@
     {{ 'free-shipping.css' | asset_url | stylesheet_tag: defer: true }}
   {%- endif -%}
   <script src="{{ 'back-to-top.js' | asset_url }}" defer></script>
+<script>
+  function initSlideshow() {
+    if (typeof Flickity === 'undefined') {
+      setTimeout(initSlideshow, 50);
+      return;
+    }
+    
+    window.dispatchEvent(new Event('flickity:available'));
+    
+    var slideshows = document.querySelectorAll('product-slider, slide-show');
+    slideshows.forEach(function(slideshow) {
+      if (!slideshow.dataset.initiated) {
+        slideshow.initWhenFlickityAvailable();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlideshow);
+  } else {
+    initSlideshow();
+  }
+</script>
 </body>
 </html>
