@@ -29,7 +29,7 @@ const template = `
 
 const updaters = new WeakMap()
 
-export class ScrollShadowElement extends HTMLElement {
+class ScrollShadowElement extends HTMLElement {
   static get observedAttributes() {
     return ['el']
   }
