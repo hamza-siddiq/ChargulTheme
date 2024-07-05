@@ -50,7 +50,7 @@
 					{% assign master_width = image.src.width | append: 'x' | append: image.src.height %}
 					{% assign width = '375x0' | append: ',' | append: master_width %}
 						{% if forloop.first %}
-						  {%- render 'responsive-image', image: image, input_sizes: width -%}
+						  {%- render 'responsive-image', image: image, input_sizes: width, priority: 'high' -%}
 						{% else %}
 						  {%- render 'responsive-image', image: image, input_sizes: width -%}
 						{% endif %}

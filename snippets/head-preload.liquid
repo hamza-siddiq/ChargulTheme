@@ -1,5 +1,5 @@
 {% if template contains 'product' -%}
-	<link href="{{ 'product.css' | asset_url }}">
+	{{ 'product.css' | asset_url | stylesheet_tag: preload: true }}
 {% liquid
 	if product.selected_or_first_available_variant.featured_media.preview_image
 		assign image = product.selected_or_first_available_variant.featured_media.preview_image

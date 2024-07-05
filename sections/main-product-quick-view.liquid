@@ -1,4 +1,3 @@
-{{ 'product.css' | asset_url | stylesheet_tag: defer: true }}
 {%- liquid
 	assign hide_variants = section.settings.hide_variants
 	assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
