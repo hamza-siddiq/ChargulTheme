@@ -257,39 +257,47 @@
     {% render 'back-to-top' %}
     <div class="click-capture"></div>
   </div>
+  {% if template contains 'index' or template contains 'product' %}
   <script src="{{ 'vendor-flickity-pkgd.min.js' | asset_url }}" defer></script>
+  {% endif %}
   <script src="{{ 'app.js' | asset_url }}" defer></script>
-  <script src="{{ 'product.js' | asset_url }}" defer></script>
-  <script src="{{ 'slideshow.js' | asset_url }}" defer></script>  
-  <script src="{{ 'scroll-shadow.js' | asset_url }}" defer></script>
-  <script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
+  {% if template contains 'product'-%}
+	<script src="{{ 'product.js' | asset_url }}" defer></script>
+  {% endif %}
+  {% if template contains 'index' %}
+  	<script src="{{ 'slideshow.js' | asset_url }}" defer></script>  
+  {% endif %}
+  	<script src="{{ 'scroll-shadow.js' | asset_url }}" defer></script>
+  	<script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
   {%- if settings.free_shipping -%}
     <script src="{{ 'free-shipping.js' | asset_url }}" defer></script>
     {{ 'free-shipping.css' | asset_url | stylesheet_tag: defer: true }}
   {%- endif -%}
-  <script src="{{ 'back-to-top.js' | asset_url }}" defer></script>
-<script>
-  function initSlideshow() {
-    if (typeof Flickity === 'undefined') {
-      setTimeout(initSlideshow, 50);
-      return;
-    }
-    
-    window.dispatchEvent(new Event('flickity:available'));
-    
-    var slideshows = document.querySelectorAll('product-slider, slide-show');
-    slideshows.forEach(function(slideshow) {
-      if (!slideshow.dataset.initiated) {
-        slideshow.initWhenFlickityAvailable();
-      }
-    });
-  }
+  	<script src="{{ 'back-to-top.js' | asset_url }}" defer></script>
+  {% if template contains 'index' or template contains 'product' %}
+	<script>
+	function initSlideshow() {
+		if (typeof Flickity === 'undefined') {
+		setTimeout(initSlideshow, 50);
+		return;
+		}
+		
+		window.dispatchEvent(new Event('flickity:available'));
+		
+		var slideshows = document.querySelectorAll('product-slider, slide-show');
+		slideshows.forEach(function(slideshow) {
+		if (!slideshow.dataset.initiated) {
+			slideshow.initWhenFlickityAvailable();
+		}
+		});
+	}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSlideshow);
-  } else {
-    initSlideshow();
-  }
-</script>
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initSlideshow);
+	} else {
+		initSlideshow();
+	}
+	</script>
+{% endif %}
 </body>
 </html>
