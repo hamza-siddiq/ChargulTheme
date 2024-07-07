@@ -91,8 +91,8 @@
 		{%- assign mobile_width = width | times: 0.5 | round -%}
 		{%- assign mobile_height = height | times: 0.5 | round -%}
 		{%- assign mobile_height = mobile_height | at_least: 1 | at_most: 5760 -%}
-		{{ image | image_url: width: width, height: height, crop: 'center', format: 'webp', quality: 80 }} {{ width }}w,
-		{{ image | image_url: width: mobile_width, height: mobile_height, crop: 'center', format: 'webp', quality: 80 }} {{ mobile_width }}w
+		{{ image | image_url: width: width, height: height, crop: 'center'}} {{ width }}w,
+		{{ image | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} {{ mobile_width }}w
 		{%- unless forloop.last -%}, {%- endunless -%}
 	  {%- endfor -%}
 	"

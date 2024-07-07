@@ -47,12 +47,10 @@
 			  <div class="image-with-text-slideshow__image-media {{ mobile_height }} {{ desktop_height }}">
 				{% if block.settings.image %}
 					{% assign image = block.settings.image %}
-					{% assign master_width = image.src.width | append: 'x' | append: image.src.height %}
-					{% assign width = '375x0' | append: ',' | append: master_width %}
 						{% if forloop.first %}
-						  {%- render 'responsive-image', image: image, input_sizes: width, priority: 'high' -%}
+						  {%- render 'responsive-image', image: image, priority: 'high' -%}
 						{% else %}
-						  {%- render 'responsive-image', image: image, input_sizes: width -%}
+						  {%- render 'responsive-image', image: image -%}
 						{% endif %}
 				{% else %}
 				  {%- assign index = forloop.index | modulo: 2 | plus: 1 -%}
