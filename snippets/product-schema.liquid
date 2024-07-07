@@ -37,7 +37,6 @@
         "image": {{ product.featured_image | img_url: 'grande' | prepend: "https:" | json }},
         "name" : {{ product.title | strip_html | escape | json }},
         "sku": {{ product.selected_or_first_available_variant.sku | json }},
-        "description" : {{ product.description | strip_html | json }},
         "priceValidUntil": {{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' | json }}
       },
       "additionalProperty": [
