@@ -1,0 +1,8 @@
+{% render 'organization-schema' %}
+{% render 'website-schema' %}
+{% render 'webpage-schema' %}
+
+{% unless template.name == 'index' or template.name == 'cart' %}
+    {% render 'breadcrumbs-schema' %}
+    {% endunless %}
+{% render 'site-navigation-schema' %}
