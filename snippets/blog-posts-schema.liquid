@@ -1,0 +1,33 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ blog.url | absolute_url }}"
+      },
+      "name": "{{ blog.title }}",
+      "description": "{{ blog.description | default: 'Expert Insights on Afghan Rugs' }}",
+      "datePublished": "{{ 'now' | date: '%Y-%m-%d' }}",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "{{ shop.name }}",
+        "url": "{{ shop.url }}"
+      },
+      "hasPart": [
+        {% for article in blog.articles %}
+        {
+          "@type": "BlogPosting",
+          "headline": {{ article.title | json }},
+          "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+          "image": {
+            "@type": "ImageObject",
+            "url": "{{ article.image | img_url: 'large' }}"
+          },
+          "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
+          "url": "{{ article.url | absolute_url }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    </script>
