@@ -17,3 +17,7 @@
     {% render 'faq-schema' %}
 {% endif %}
 
+{% if template.name == 'page' and page.handle == 'contact' %}
+    {% render 'contact-schema' %}
+{% endif %}
+
