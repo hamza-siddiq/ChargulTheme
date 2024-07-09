@@ -1,6 +1,5 @@
 {% render 'organization-schema' %}
 {% render 'website-schema' %}
-{% render 'webpage-schema' %}
 
 {% unless template.name == 'index' or template.name == 'cart' %}
     {% render 'breadcrumbs-schema' %}
@@ -8,4 +7,8 @@
 
 {% if template.name == 'index' %}
     {% render 'homepage-schema' %}
+{% endif %}
+
+{% if template.name == 'page' and page.handle == 'about-us' %}
+    {% render 'about-us-schema' %}
 {% endif %}
