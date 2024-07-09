@@ -10,7 +10,7 @@
             "item": {
               "@type": "Thing",
               "name": "{{ block.settings.heading }}",
-              "description": "{{ block.settings.text }}",
+              "description": "{{ block.settings.text | strip_html }}",
               "image": "{{ block.settings.image | img_url: '300x' }}"
             }
           }{% unless forloop.last %},{% endunless %}
