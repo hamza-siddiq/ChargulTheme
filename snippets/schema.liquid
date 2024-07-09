@@ -25,3 +25,10 @@
     {% render 'blog-posts-schema' %}
 {% endif %}
 
+{% if template.name == 'article' %}
+    {% render 'article-schema' %}
+{% endif %}
+
+{% if template.name == 'collection' %}
+    {% render 'collection-schema' %}
+{% endif %}

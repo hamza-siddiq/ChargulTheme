@@ -14,6 +14,11 @@
         {{ article.image | img_url: '1200x' | prepend: "https:" | json }},
         {{ article.image | img_url: '600x' | prepend: "https:" | json }}
       ],
+      "isPartOf": {
+        "@type": "Blog",
+        "name": "{{ blog.title }}",
+        "url": "{{ shop.url }}{{ blog.url }}"
+      },
       "author": {
         "@type": "Person",
         "name": {{ article.author | json }}
