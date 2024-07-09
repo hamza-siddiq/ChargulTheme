@@ -1,0 +1,20 @@
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {% for block in section.blocks %}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "item": {
+              "@type": "Thing",
+              "name": "{{ block.settings.heading }}",
+              "description": "{{ block.settings.text }}",
+              "image": "{{ block.settings.image | img_url: '300x' }}"
+            }
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }
+</script>
