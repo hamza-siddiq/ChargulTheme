@@ -21,26 +21,31 @@
         "description": "A large heading displaying 'Blog posts' with the current date"
       },
       {
-        "@type": "ItemList",
+        "@type": "WebPageElement",
         "name": "Blog Posts Grid",
-        "description": "A grid display of our blog posts about Afghan rugs",
-        "itemListElement": [
-          {% for article in blog.articles %}
-          {
-            "@type": "BlogPosting",
-            "position": {{ forloop.index }},
-            "headline": {{ article.title | json }},
-            "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
-            "image": {
-              "@type": "ImageObject",
-              "url": "{{ article.image }}"
-            },
-            "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
-            "url": "{{ article.url | absolute_url }}"
-          }{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-        ]
+        "description": "A grid layout containing cards for each blog post, displaying the post's image, title, publication date, and a brief excerpt"
       }
-    ]
+    ],
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Blog Posts Grid",
+      "description": "A grid display of our blog posts about Afghan rugs",
+      "itemListElement": [
+        {% for article in blog.articles %}
+        {
+          "@type": "BlogPosting",
+          "position": {{ forloop.index }},
+          "headline": {{ article.title | json }},
+          "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+          "image": {
+            "@type": "ImageObject",
+            "url": "{{ article.image }}"
+          },
+          "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
+          "url": "{{ article.url | absolute_url }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
   }
   </script>
