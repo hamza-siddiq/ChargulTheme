@@ -32,8 +32,12 @@
 		},
 		{
 		  "@type": "WebPageElement",
+		  "@id": "#product-grid",
 		  "name": "Product Grid",
-		  "description": "A grid layout displaying Afghan rugs in this collection, each with an image, title, price, and quick-view option"
+		  "description": "A grid layout displaying Afghan rugs in this collection, each with an image, title, price, and quick-view option",
+		  "mainEntityOfPage": {
+			"@id": "#product-list"
+		  }
 		},
 		{
 		  "@type": "WebPageElement",
@@ -48,8 +52,9 @@
 	  ],
 	  "mainEntity": {
 		"@type": "ItemList",
+		"@id": "#product-grid",
 		"name": "Product Grid",
-		"description": "Grid display of Afghan rugs available in this collection.",
+		"description": "Grid displays of Afghan rugs available in this collection.",
 		"numberOfItems": {{ collection.products_count }},
 		"itemListElement": [
 		  {% for product in collection.products limit:10 %}
