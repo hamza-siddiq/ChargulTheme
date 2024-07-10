@@ -2,65 +2,44 @@
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": "{{ canonical_url }}#collectionpage",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "{{ canonical_url }}"
+      "@id": "{{ blog.url | absolute_url }}"
     },
+    "name": "{{ blog.title }}",
+    "description": "{{ blog.description | default: 'Expert Insights on Afghan Rugs' }}",
+    "datePublished": "{{ 'now' | date: '%Y-%m-%d' }}",
     "isPartOf": {
       "@type": "WebSite",
       "name": "{{ shop.name }}",
       "url": "{{ shop.url }}"
     },
-    "name": "{{ collection.title | escape }}",
-    "description": "{{ collection.description | strip_html | newline_to_br | strip_newlines | replace: '<br />', ' : ' | truncate: 150 | default: "Available: All Sizes"}}",
-    "image": "https:{{ collection.image | img_url: 'large' }}",
-    "inLanguage": "en",
-    "datePublished": "{{ collection.published_at | date: '%Y-%m-%d' }}",
-    "dateModified": "{{ collection.updated_at | date: '%Y-%m-%d' }}",
-    "offers": {
-      "@type": "AggregateOffer",
-      "offerCount": "{{ collection.products_count }}",
-      "lowPrice": "{{ collection.products | map: 'price' | sort | first | money_without_currency | remove: ',' }}",
-      "highPrice": "{{ collection.products | map: 'price' | sort | last | money_without_currency | remove: ',' }}",
-      "priceCurrency": "{{ shop.currency }}"
-    },
-    "numberOfItems": {{ collection.products_count }},
     "hasPart": [
       {
         "@type": "WebPageElement",
-        "name": "Hero Image",
-        "description": "A large banner image showcasing featured Afghan rugs from the collection",
-        "image": "https:{{ collection.featured_image }}"
+        "name": "Blog Posts heading",
+        "description": "A large heading displaying 'Blog posts' with the current date"
       },
       {
-        "@type": "WebPageElement",
-        "name": "Product Grid",
-        "description": "Grid display of Afghan rugs available in this collection.",
+        "@type": "ItemList",
+        "name": "Blog Posts Grid",
+        "description": "A grid display of our blog posts about Afghan rugs",
         "itemListElement": [
-          {% for product in collection.products limit:10 %}
+          {% for article in blog.articles %}
           {
-            "@type": "Product",
-            "name": {{ product.title | json }},
-            "image": "https:{{ product.featured_image | img_url: 'large' }}",
-            "offers": {
-              "@type": "Offer",
-              "price": "{{ product.price | money_without_currency | remove: ',' }}",
-              "priceCurrency": "{{ shop.currency }}"
-            }
+            "@type": "BlogPosting",
+            "position": {{ forloop.index }},
+            "headline": {{ article.title | json }},
+            "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+            "image": {
+              "@type": "ImageObject",
+              "url": "{{ article.image }}"
+            },
+            "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
+            "url": "{{ article.url | absolute_url }}"
           }{% unless forloop.last %},{% endunless %}
           {% endfor %}
         ]
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "Shopping Information",
-        "description": "Detailed information about Afghan rugs, custom options, shipping, and return policies."
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "Blog Posts",
-        "description": "Learn more about the art of Afghan Rugs through our blog posts."
       }
     ]
   }
