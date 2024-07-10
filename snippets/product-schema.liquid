@@ -1,6 +1,8 @@
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org/",
+{
+  "@context": "https://schema.org/",
+  "@type": "WebPage",
+  "mainEntity": {
     "@type": "Product",
     "@id": "{{ shop.url }}{{ product.url }}#product",
     "name": "{{ product.title }}",
@@ -9,7 +11,94 @@
         "https:{{ image.src | img_url: 'master' }}"{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ],
-    "description": "{{ product.description | strip_html }}",
+    "description": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {% assign parts = article.content | split: '<h2>' %}
+        {% assign has_parts = false %}
+        {% for part in parts %}
+          {% if forloop.first %}
+            {% assign paragraphs = part | split: '</p>' %}
+            {% for paragraph in paragraphs %}
+              {% assign clean_paragraph = paragraph | strip_html | strip | replace: '\n', '' %}
+              {% if clean_paragraph != '' %}
+                {% if has_parts %},{% endif %}
+                {
+                  "@type": "ListItem",
+                  "position": {{ forloop.index }},
+                  "item": {
+                    "@type": "WebPageElement",
+                    "text": "{{ clean_paragraph | escape }}"
+                  }
+                }
+                {% assign has_parts = true %}
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            {% assign sub_parts = part | split: '</h2>' %}
+            {% assign heading = sub_parts[0] | strip_html | strip | replace: '\n', '' %}
+            {% assign paragraphs = sub_parts[1] | split: '</p>' %}
+            {% if has_parts %},{% endif %}
+            {
+              "@type": "ListItem",
+              "position": {{ forloop.index }},
+              "item": {
+                "@type": "WebPageElement",
+                "name": "{{ heading | escape }}",
+                "text": "{% for paragraph in paragraphs %}{% assign clean_paragraph = paragraph | strip_html | strip | replace: '\n', '' %}{% if clean_paragraph != '' %}{{ clean_paragraph | escape }} {% endif %}{% endfor %}"
+              }
+            }
+            {% assign has_parts = true %}
+          {% endif %}
+        {% endfor %}
+      ]
+    }
+  },
+  "isPartOf": {
+    "@type": "WebPage",
+    "name": "Chargul Afghan Rugs Collection",
+    "url": "{{ shop.url }}/collections/afghan-rugs"
+  },
+  "hasPart": [
+    {
+      "@type": "WebPageElement",
+      "name": "Product Information",
+      "@id": "{{ shop.url }}{{ product.url }}#product-information",
+      "description": "Information about the products unique selling points featuring the product "
+    },
+    {
+      "@type": "WebPageElement",
+      "name": "Complementary Products",
+      "description": "Section showcasing related or complementary products"
+    },
+    {
+      "@type": "WebPageElement",
+      "name": "Handcrafted Wonders",
+      "description": "Information about the craftsmanship of Afghan rugs"
+    },
+    {
+      "@type": "WebPageElement",
+      "name": "The Journey of Chargul's Afghan Rugs",
+      "description": "Story of how the rugs are made and delivered"
+    },
+    {
+      "@type": "WebPageElement",
+      "name": "Timeless Beauty, Unmatched Quality",
+      "description": "Overview of the rug collection's qualities"
+    },
+    {
+      "@type": "WebPageElement",
+      "name": "The Enchantment of an Afghan Rug",
+      "description": "Poetic description of the allure of Afghan rugs"
+    },
+    {
+      "@type": "WebPageElement",
+      "name": "Discover Curated Rugs",
+      "description": "Gallery of other available rugs"
+    }
+  ],
+  "about": {
+    "@type": "Product",
     "sku": "{{ product.selected_or_first_available_variant.sku }}",
     "brand": {
       "@type": "Brand",
@@ -23,58 +112,6 @@
       "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
       "itemCondition": "https://schema.org/NewCondition"
     },
-    "isPartOf": {
-      "@type": "WebPage",
-      "name": "Chargul Afghan Rugs Collection",
-      "url": "{{ shop.url }}/collections/afghan-rugs"
-    },
-    "hasPart": [
-      {
-        "@type": "WebPageElement",
-        "name": "Product heading",
-        "description": "The name of the product"
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "Product Images",
-        "description": "A slideshow of images showcasing the product"
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "Product Description",
-        "description": "Information about the products unique selling points"
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "Complementary Products",
-        "description": "Section showcasing related or complementary products"
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "Handcrafted Wonders",
-        "description": "Information about the craftsmanship of Afghan rugs"
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "The Journey of Chargul's Afghan Rugs",
-        "description": "Story of how the rugs are made and delivered"
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "Timeless Beauty, Unmatched Quality",
-        "description": "Overview of the rug collection's qualities"
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "The Enchantment of an Afghan Rug",
-        "description": "Poetic description of the allure of Afghan rugs"
-      },
-      {
-        "@type": "WebPageElement",
-        "name": "Discover Curated Rugs",
-        "description": "Gallery of other available rugs"
-      }
-    ],
     "additionalProperty": [
       {
         "@type": "PropertyValue",
@@ -113,4 +150,5 @@
       "unitCode": "KGM"
     }
   }
-  </script>
+}
+</script>
