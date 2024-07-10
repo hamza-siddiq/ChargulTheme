@@ -1,76 +1,77 @@
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ article.url | absolute_url }}"
-  },
-  "headline": "{{ article.title | escape }}",
-  "name": "{{ article.title | escape }}",
-  "description": "{{ article.excerpt_or_content | strip_html | truncatewords: 150 | escape }}",
-  "image": [
-    "{{ article.image | img_url: 'master' | prepend: 'https:' }}",
-    "{{ article.image | img_url: '1200x' | prepend: 'https:' }}",
-    "{{ article.image | img_url: '600x' | prepend: 'https:' }}"
-  ],
-  "isPartOf": {
-    "@type": "Blog",
-    "name": "{{ blog.title | escape }}",
-    "url": "{{ blog.url | absolute_url }}"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "{{ article.author | escape }}"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "{{ shop.name | escape }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.chargul.com/cdn/shop/files/chargul-logo.webp?v=1719941904",
-      "width": 200,
-      "height": 60
-    }
-  },
-  "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
-  "dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}",
-  {% if article.tags.size > 0 %}
-    "keywords": "{{ article.tags | join: ', ' | escape }}",
-  {% endif %}
-  {% if blog.title %}
-    "articleSection": "{{ blog.title | escape }}",
-  {% endif %}
-  "wordCount": {{ article.content | strip_html | split: ' ' | size }},
-  "timeRequired": "PT{{ article.content | strip_html | split: ' ' | size | divided_by: 200 | round }}M",
-  "articleBody": {{ article.content | json }},
-  "hasPart": [
-    {
-      "@type": "WebPageElement",
-      "name": "Article Header",
-      "description": "Title, author, and publication date of the article"
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": "{{ article.url | absolute_url }}#blogposting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ article.url | absolute_url }}"
     },
-    {
-      "@type": "WebPageElement",
-      "name": "Article Image",
-      "description": "Main image of the article",
-      "image": "{{article.image}}"
+    "headline": "{{ article.title | escape }}",
+    "name": "{{ article.title | escape }}",
+    "description": "{{ article.excerpt_or_content | strip_html | truncatewords: 150 | escape }}",
+    "image": [
+      "{{ article.image | img_url: 'master' }}",
+      "{{ article.image | img_url: '1200x' }}",
+      "{{ article.image | img_url: '600x' }}"
+    ],
+    "isPartOf": {
+      "@type": "Blog",
+      "name": "{{ blog.title | escape }}",
+      "url": "{{ blog.url | absolute_url }}"
     },
-    {
-      "@type": "WebPageElement",
-      "name": "Article Content",
-      "description": "Main body of the article including text and images"
+    "author": {
+      "@type": "Person",
+      "name": "{{ article.author | escape }}"
     },
-    {
-      "@type": "WebPageElement",
-      "name": "Comments Section",
-      "description": "Reader comments and discussion area"
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ shop.name | escape }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.chargul.com/cdn/shop/files/chargul-logo.webp?v=1719941904",
+        "width": 200,
+        "height": 60
+      }
     },
-    {
-      "@type": "WebPageElement",
-      "name": "Newly Curated Rugs",
-      "text": "A selection of our latest Afghan rugs available for purchase."
-    }
-  ]
-}
-</script>
+    "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+    "dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}",
+    {% if article.tags.size > 0 %}
+      "keywords": "{{ article.tags | join: ', ' | escape }}",
+    {% endif %}
+    {% if blog.title %}
+      "articleSection": "{{ blog.title | escape }}",
+    {% endif %}
+    "wordCount": {{ article.content | strip_html | split: ' ' | size }},
+    "timeRequired": "PT{{ article.content | strip_html | split: ' ' | size | divided_by: 200 | round }}M",
+    "articleBody": "{{ article.content | strip_html | json }}",
+    "hasPart": [
+      {
+        "@type": "WebPageElement",
+        "name": "Article Header",
+        "description": "Title, author, and publication date of the article"
+      },
+      {
+        "@type": "WebPageElement",
+        "name": "Article Image",
+        "description": "Main image of the article",
+        "image": "{{ article.image | img_url: 'master' }}"
+      },
+      {
+        "@type": "WebPageElement",
+        "name": "Article Content",
+        "description": "Main body of the article including text and images"
+      },
+      {
+        "@type": "WebPageElement",
+        "name": "Comments Section",
+        "description": "Reader comments and discussion area"
+      },
+      {
+        "@type": "WebPageElement",
+        "name": "Newly Curated Rugs",
+        "description": "A selection of our latest Afghan rugs available for purchase."
+      }
+    ]
+  }
+  </script>

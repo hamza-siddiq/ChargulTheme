@@ -2,6 +2,7 @@
 	{
 	  "@context": "https://schema.org",
 	  "@type": "CollectionPage",
+	  "@id": "{{ canonical_url }}#collectionpage",
 	  "mainEntityOfPage": {
 		"@type": "WebPage",
 		"@id": "{{ canonical_url }}"
@@ -13,7 +14,7 @@
 	  },
 	  "name": "{{ collection.title | escape }}",
 	  "description": "{{ collection.description | strip_html | newline_to_br | strip_newlines | replace: '<br />', ' : ' | truncate: 150 | default: "Available: All Sizes"}}",
-	  "image": "{{ collection.image | img_url: 'large' }}",
+	  "image": "https:{{ collection.image | img_url: 'large' }}",
 	  "offers": {
 		"@type": "AggregateOffer",
 		"offerCount": "{{ collection.products_count }}",
@@ -27,7 +28,7 @@
 		{
 		  "@type": "Product",
 		  "name": {{ product.title | json }},
-		  "image": "{{ product.featured_image | img_url: 'large' }}",
+		  "image": "https:{{ product.featured_image | img_url: 'large' }}",
 		  "offers": {
 			"@type": "Offer",
 			"price": "{{ product.price | money_without_currency | remove: ',' }}",
@@ -41,7 +42,7 @@
 			"@type": "WebPageElement",
 			"name": "Hero Image",
 			"description": "A large banner image showcasing featured Afghan rugs from the collection",
-			"image": "{{ collection.featured_image }}"
+			"image": "https:{{ collection.featured_image }}"
 		},
 		{
 			"@type": "WebPageElement",

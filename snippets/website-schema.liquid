@@ -1,19 +1,24 @@
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": {{ shop.name | json }},
-      "url": {{ shop.secure_url | json }},
-      "potentialAction": {
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": {{ shop.secure_url | append: "#website" | json }},
+    "name": {{ shop.name | json }},
+    "url": {{ shop.secure_url | json }},
+    "description": "Chargul offers authentic, hand-knotted Afghan wool rugs, promoting cultural exchange and preserving traditional weaving arts.",
+    "inLanguage": "en-US",
+    "potentialAction": [
+      {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "{{ shop.secure_url }}/search?type=product&q={search_term_string}"
+          "urlTemplate": {{ shop.secure_url | append: "/search?type=product&q={search_term_string}" | json }}
         },
         "query-input": "required name=search_term_string"
-      },
-      "sameAs": [
-        "https://www.instagram.com/chargul"
-      ]
-    }
-</script>
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/chargul"
+    ]
+  }
+  </script>
