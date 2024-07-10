@@ -44,44 +44,31 @@
     "wordCount": {{ article.content | strip_html | split: ' ' | size }},
     "timeRequired": "PT{{ article.content | strip_html | split: ' ' | size | divided_by: 200 | round }}M",
     "hasPart": [
-      {% assign parts = article.content | split: '<h2>' %}
-      {% assign has_parts = false %}
-      {% for part in parts %}
-        {% if forloop.first %}
-          {% assign paragraphs = part | split: '</p>' %}
-          {% for paragraph in paragraphs %}
-            {% assign clean_paragraph = paragraph | strip_html | strip | replace: '\n', '' %}
-            {% if clean_paragraph != '' %}
-              {% if has_parts %},{% endif %}
-              {
-                "@type": "WebPageElement",
-                "text": "{{ clean_paragraph | escape }}"
-              }
-              {% assign has_parts = true %}
-            {% endif %}
-          {% endfor %}
-        {% else %}
-          {% assign sub_parts = part | split: '</h2>' %}
-          {% assign heading = sub_parts[0] | strip_html | strip | replace: '\n', '' %}
-          {% assign paragraphs = sub_parts[1] | split: '</p>' %}
-          {% if has_parts %},{% endif %}
-          {
-            "@type": "WebPageElement",
-            "name": "{{ heading | escape }}",
-            "text": "{% for paragraph in paragraphs %}{% assign clean_paragraph = paragraph | strip_html | strip | replace: '\n', '' %}{% if clean_paragraph != '' %}{{ clean_paragraph | escape }} {% endif %}{% endfor %}"
-          }
-          {% assign has_parts = true %}
-        {% endif %}
-      {% endfor %},
       {
         "@type": "WebPageElement",
-        "name": "Leave a comment",
-        "text": "Your email address will not be published. Comment, Name, Email"
+        "name": "Article Header",
+        "description": "Title, author, and publication date of the article"
       },
       {
         "@type": "WebPageElement",
+        "name": "Article Image",
+        "description": "Main image of the article"
+        "image": "{{article.image}}"
+      },
+      {
+        "@type": "WebPageElement",
+        "name": "Article Content",
+        "description": "Main body of the article including text and images"
+      },
+    {
+      "@type": "WebPageElement",
+      "name": "Comments Section",
+      "description": "Reader comments and discussion area"
+    },
+      {
+        "@type": "WebPageElement",
         "name": "Newly Curated Rugs",
-        "text": "Discover the latest additions to our exquisite Afghan rug gallery"
+        "text": "A selection of our latest Afghan rugs available for purchase."
       }
     ]
   }
