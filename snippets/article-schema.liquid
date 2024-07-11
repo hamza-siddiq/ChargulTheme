@@ -1,109 +1,66 @@
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "{{ article.url | absolute_url }}",
-  "url": "{{ article.url | absolute_url }}",
-  "name": "{{ article.title | escape }}",
-  "description": "{{ article.excerpt_or_content | strip_html | truncatewords: 150 | escape }}",
-  "isPartOf": {
-    "@type": "Website",
-    "name": "{{ shop.name | escape }}",
-    "url": "{{ '/' | absolute_url }}"
-  },
-  "inLanguage": "{{ shop.locale }}",
-  "publisher": {
-    "@type": "Organization",
-    "name": "{{ shop.name | escape }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.chargul.com/cdn/shop/files/chargul-logo.webp?v=1719941904",
-      "width": 200,
-      "height": 60
-    }
-  },
-  "mainEntity": {
-    "@type": "BlogPosting",
-    "@id": "{{ article.url | absolute_url }}#article",
-    "headline": "{{ article.title | escape }}",
-    "image": [
-      "{{ article.image | img_url: 'master' }}",
-      "{{ article.image | img_url: '1200x' }}",
-      "{{ article.image | img_url: '600x' }}"
-    ],
-    "author": {
-      "@type": "Person",
-      "name": "{{ article.author | escape }}"
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "{{ article.url | absolute_url }}",
+    "url": "{{ article.url | absolute_url }}",
+    "name": "{{ article.title | escape }}",
+    "description": "{{ article.excerpt_or_content | strip_html | truncatewords: 150 | escape }}",
+    "isPartOf": {
+      "@type": "Website",
+      "name": "{{ shop.name | escape }}",
+      "url": "{{ '/' | absolute_url }}"
     },
-    "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
-    "dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}",
-    {% if article.tags.size > 0 %}
-      "keywords": "{{ article.tags | join: ', ' | escape }}",
-    {% endif %}
-    "wordCount": {{ article.content | strip_html | split: ' ' | size }},
-    "articleBody": {
-      "@type": "ItemList",
-      "itemListElement": [
-        {% assign parts = article.content | split: '<h2>' %}
-        {% assign has_parts = false %}
-        {% assign index = 0 %}
-        {% for part in parts %}
-          {% if forloop.first %}
-            {% assign paragraphs = part | split: '</p>' %}
-            {% for paragraph in paragraphs %}
-              {% assign clean_paragraph = paragraph | strip_html | strip | replace: '\n', '' %}
-              {% if clean_paragraph != '' %}
-                {% assign index = index | plus: 1 %}
-                {% if has_parts %},{% endif %}
-                {
-                  "@type": "ListItem",
-                  "position": {{ index }},
-                  "item": {
-                    "@type": "WebPageElement",
-                    "text": "{{ clean_paragraph | escape }}"
-                  }
-                }
-                {% assign has_parts = true %}
-              {% endif %}
-            {% endfor %}
-          {% else %}
-            {% assign sub_parts = part | split: '</h2>' %}
-            {% assign heading = sub_parts[0] | strip_html | strip | replace: '\n', '' %}
-            {% assign paragraphs = sub_parts[1] | split: '</p>' %}
-            {% assign index = index | plus: 1 %}
-            {% if has_parts %},{% endif %}
-            {
-              "@type": "ListItem",
-              "position": {{ index }},
-              "item": {
-                "@type": "WebPageElement",
-                "name": "{{ heading | escape }}",
-                "text": "{% for paragraph in paragraphs %}{% assign clean_paragraph = paragraph | strip_html | strip | replace: '\n', '' %}{% if clean_paragraph != '' %}{{ clean_paragraph | escape }} {% endif %}{% endfor %}"
-              }
-            }
-            {% assign has_parts = true %}
-          {% endif %}
-        {% endfor %}
-      ]
-    }
-  },
-  "hasPart": [
-    {
-      "@type": "WebPageElement",
+    "inLanguage": "{{ shop.locale }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ shop.name | escape }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.chargul.com/cdn/shop/files/chargul-logo.webp?v=1719941904",
+        "width": 200,
+        "height": 60
+      }
+    },
+    "mainEntity": {
+      "@type": "BlogPosting",
       "@id": "{{ article.url | absolute_url }}#article",
-      "name": "Article Content",
-      "description": "Main body of the article including text and images"
+      "headline": "{{ article.title | escape }}",
+      "image": [
+        "{{ article.image | img_url: 'master' }}",
+        "{{ article.image | img_url: '1200x' }}",
+        "{{ article.image | img_url: '600x' }}"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "{{ article.author | escape }}"
+      },
+      "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+      "dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}",
+      {% if article.tags.size > 0 %}
+        "keywords": "{{ article.tags | join: ', ' | escape }}",
+      {% endif %}
+      "wordCount": {{ article.content | strip_html | split: ' ' | size }},
+      "articleBody": "{{ article.content | strip_html | newline_to_br | strip_newlines | replace: '<br />', ' '  | escape }}"
     },
-    {
-      "@type": "WebPageElement",
-      "name": "Comments Section",
-      "description": "Reader comments and discussion area"
-    },
-    {
-      "@type": "WebPageElement",
-      "name": "Newly Curated Rugs",
-      "description": "A selection of our latest Afghan rugs available for purchase."
-    }
-  ]
-}
-</script>
+    "hasPart": [
+      {
+        "@type": "WebPageElement",
+        "@id": "{{ article.url | absolute_url }}#article",
+        "name": "Article Content",
+        "description": "Main body of the article including text and images"
+      },
+      {
+        "@type": "WebPageElement",
+        "name": "Comments Section",
+        "description": "Reader comments and discussion area"
+      },
+      {
+        "@type": "WebPageElement",
+        "name": "Newly Curated Rugs",
+        "description": "A selection of our latest Afghan rugs available for purchase."
+      }
+    ]
+  }
+  </script>
+  
