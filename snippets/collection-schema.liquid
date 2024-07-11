@@ -23,6 +23,31 @@
 		"priceCurrency": "{{ shop.currency }}"
 	  },
 	  "numberOfItems": {{ collection.products_count }},
+	  "mainEntity": {
+		"@type": "ItemList",
+		"@id": "#product-grid",
+		"name": "Product Grid",
+		"description": "Grid displays of Afghan rugs available in this collection.",
+		"numberOfItems": {{ collection.products_count }},
+		"itemListElement": [
+		  {% for product in collection.products limit:10 %}
+		  {
+			"@type": "Product",
+			"position": {{ forloop.index }},
+			"name": {{ product.title | json }},
+			"image": "https:{{ product.featured_image | img_url: 'large' }}",
+			"description": {{ product.description | strip_html | truncatewords: 30 | json }},
+			"url": "{{ product.url | absolute_url }}",
+			"offers": {
+			  "@type": "Offer",
+			  "price": "{{ product.price | money_without_currency | remove: ',' }}",
+			  "priceCurrency": "{{ shop.currency }}",
+			  "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}"
+			}
+		  }{% unless forloop.last %},{% endunless %}
+		  {% endfor %}
+		]
+	  },
 	  "hasPart": [
 		{
 		  "@type": "WebPageElement",
@@ -107,31 +132,6 @@
 			{%- endfor -%}
 		  ]
 		}
-	  ],
-	  "mainEntity": {
-		"@type": "ItemList",
-		"@id": "#product-grid",
-		"name": "Product Grid",
-		"description": "Grid displays of Afghan rugs available in this collection.",
-		"numberOfItems": {{ collection.products_count }},
-		"itemListElement": [
-		  {% for product in collection.products limit:10 %}
-		  {
-			"@type": "Product",
-			"position": {{ forloop.index }},
-			"name": {{ product.title | json }},
-			"image": "https:{{ product.featured_image | img_url: 'large' }}",
-			"description": {{ product.description | strip_html | truncatewords: 30 | json }},
-			"url": "{{ product.url | absolute_url }}",
-			"offers": {
-			  "@type": "Offer",
-			  "price": "{{ product.price | money_without_currency | remove: ',' }}",
-			  "priceCurrency": "{{ shop.currency }}",
-			  "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}"
-			}
-		  }{% unless forloop.last %},{% endunless %}
-		  {% endfor %}
-		]
-	  }
+	]
 	}
 	</script>
