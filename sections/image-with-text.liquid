@@ -47,16 +47,11 @@
 							{%- endif -%}
 						{%- endif -%}
 					{%- elsif image != blank -%}
-						{%- liquid
-							assign small_width = image.src.height | times: '345' | divided_by: image.src.width
-							assign master_width = image.src.width | append: 'x' | append: image.src.height
-							assign width = '345x' | append: small_width | append: ',' | append: master_width
-
-							if height == 'adapt'
-								assign width = image.src.width | append: 'x' | append: image.src.height
-							endif
-						-%}
-						{%- render 'responsive-image', image: image, input_sizes: width -%}
+						{% if image.alt contains "Hamza" %}
+							{%- render 'responsive-image', image: image, priority: 'high' -%}
+						{% else %}
+							{%- render 'responsive-image', image: image -%}
+						{% endif %}
 					{%- else -%}
 						{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
 					{%- endif -%}
