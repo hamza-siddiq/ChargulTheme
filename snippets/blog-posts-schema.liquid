@@ -41,7 +41,7 @@
           "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
           "image": {
             "@type": "ImageObject",
-            "url": "{{ article.image }}"
+            "url": "{{ article.image | img_url: 'large' }}"
           },
           "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
           "url": "{{ article.url | prepend: shop.url  }}"
