@@ -27,7 +27,7 @@
       "@id": "{{ article.url | prepend: shop.url  }}#article",
       "headline": "{{ article.title | escape }}",
       "image": [
-        "{{ article.image | img_url: 'master' }}"
+        "{{ article.image | img_url: 'master' | prepend: "https:" }}"
       ],
       "author": {
         "@type": "Person",
