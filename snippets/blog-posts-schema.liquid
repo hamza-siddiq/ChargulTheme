@@ -4,7 +4,7 @@
     "@type": "CollectionPage",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "{{ blog.url | absolute_url }}"
+      "@id": "{{ blog.url | prepend: shop.url  }}"
     },
     "name": "{{ blog.title }}",
     "description": "{{ blog.description | default: 'Expert Insights on Afghan Rugs' }}",
@@ -44,7 +44,7 @@
             "url": "{{ article.image }}"
           },
           "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
-          "url": "{{ article.url | absolute_url }}"
+          "url": "{{ article.url | prepend: shop.url  }}"
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]

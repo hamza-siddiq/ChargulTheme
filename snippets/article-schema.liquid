@@ -2,14 +2,14 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "{{ article.url | absolute_url }}",
-    "url": "{{ article.url | absolute_url }}",
+    "@id": "{{ article.url | prepend: shop.url  }}",
+    "url": "{{ article.url | prepend: shop.url  }}",
     "name": "{{ article.title | escape }}",
     "description": "{{ article.excerpt_or_content | strip_html | truncatewords: 150 | escape }}",
     "isPartOf": {
       "@type": "Website",
       "name": "{{ shop.name | escape }}",
-      "url": "{{ '/' | absolute_url }}"
+      "url": "{{ '/' | prepend: shop.url  }}"
     },
     "inLanguage": "{{ shop.locale }}",
     "publisher": {
@@ -24,7 +24,7 @@
     },
     "mainEntity": {
       "@type": "BlogPosting",
-      "@id": "{{ article.url | absolute_url }}#article",
+      "@id": "{{ article.url | prepend: shop.url  }}#article",
       "headline": "{{ article.title | escape }}",
       "image": [
         "{{ article.image | img_url: 'master' }}"
@@ -44,7 +44,7 @@
     "hasPart": [
       {
         "@type": "WebPageElement",
-        "@id": "{{ article.url | absolute_url }}#article",
+        "@id": "{{ article.url | prepend: shop.url  }}#article",
         "name": "Article Content",
         "description": "Main body of the article including text and images"
       },

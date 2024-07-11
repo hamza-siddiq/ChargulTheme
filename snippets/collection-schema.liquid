@@ -28,7 +28,7 @@
 	  },
 	  "mainEntity": {
 		"@type": "ItemList",
-		"@id": "{{ product.url | absolute_url }}#product-grid",
+		"@id": "{{ product.url | prepend: shop.url  }}#product-grid",
 		"name": "Product Grid",
 		"description": "Grid displays of Afghan rugs available in this collection.",
 		"numberOfItems": {{ collection.products_count }},
@@ -42,7 +42,7 @@
 			  "name": {{ product.title | json }},
 			  "image": "https:{{ product.featured_image | img_url: 'large' }}",
 			  "description": {{ product.description | strip_html | truncatewords: 30 | json }},
-			  "url": "{{ product.url | absolute_url }}",
+			  "url": "{{ product.url | prepend: shop.url  }}",
 			  "offers": {
 				"@type": "Offer",
 				"price": "{{ product.price | money_without_currency | remove: ',' }}",
@@ -63,7 +63,7 @@
 		},
 		{
 		  "@type": "WebPageElement",
-		  "@id": "{{ product.url | absolute_url }}#product-grid",
+		  "@id": "{{ product.url | prepend: shop.url  }}#product-grid",
 		  "name": "Product Grid",
 		  "description": "A grid layout displaying Afghan rugs in this collection, each with an image, title, price, and quick-view option"
 		},
@@ -137,7 +137,7 @@
 					  "url": {{ article.image | img_url: 'large' | json }}
 					},
 					"description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
-					"url": {{ article.url | absolute_url | json }}
+					"url": {{ article.url | prepend: shop.url  | json }}
 				  }
 				}{% unless forloop.last %},{% endunless %}
 			  {%- endfor -%}
