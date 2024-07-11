@@ -12,20 +12,7 @@
             {% endif %}
             {% if block.type == 'featured_image' %}
               <div class="featured-image" {{ block.shopify_attributes }}>
-                {%- liquid
-                  case block.settings.image_ratio
-                    when 'adapt'
-                      assign master_width = article.image.width | append: 'x' | append: article.image.height
-                      assign sizes = '375x0' | append: ',' | append: master_width
-                    when 'small'
-                      assign sizes = '375x160,750x320,1060x450'
-                    when 'medium'
-                      assign sizes = '375x195,750x390,1060x550'
-                    when 'large'
-                      assign sizes = '375x230,750x460,1060x650'
-                  endcase
-                -%}
-                {%- render 'responsive-image', image: article.image, input_sizes: sizes, priority: 'high' -%}
+                {%- render 'responsive-image', image: article.image, priority: 'high' -%}
               </div>
             {% endif %}
             {% if block.type == 'title' %}

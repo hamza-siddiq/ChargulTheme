@@ -6,7 +6,7 @@
 	assign hide_variants = section.settings.hide_variants
 	assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
 
-	assign featured_media = product.selected_or_first_available_variant.featured_media
+  assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.media.first
 
 	assign sizes = '375x0,580x0,1160x0'
 

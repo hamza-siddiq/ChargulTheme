@@ -11,9 +11,15 @@
 <div class="section-spacing-bottom">
 	<div class="row large-spacing">
 		{% for article in blog.articles %}
+			{% if forloop.first%}
+			<div class="small-12 medium-4 columns">
+				{% render 'blog-post', article: article, show_date: show_date, show_excerpt: show_excerpt, show_image: show_image, index: forloop.index0, use_shapes: use_shapes, image_ratio: image_ratio, priority: 'high' %}
+			</div>
+			{% else %}
 			<div class="small-12 medium-4 columns">
 				{% render 'blog-post', article: article, show_date: show_date, show_excerpt: show_excerpt, show_image: show_image, index: forloop.index0, use_shapes: use_shapes, image_ratio: image_ratio %}
 			</div>
+			{% endif %}
 		{% endfor %}
 	</div>
 	{%- render 'pagination', paginate: paginate, pagination_type: 'paginated' -%}

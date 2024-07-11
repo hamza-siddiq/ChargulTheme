@@ -14,9 +14,15 @@
 {{ 'background-video.css' | asset_url | stylesheet_tag: defer:true }}
 <background-video class="background-video {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
   {%- if fallback_image != blank -%}
+    {% if fallback_image.alt contains "walking" %}
     <div class="background-video__fallback-img">
-      {%- render 'responsive-image', input_sizes: "160x0,320x0"image: image -%}
+      {%- render 'responsive-image', input_sizes: "160x0,320x0", image: fallback_image, priority: 'high' -%}
     </div>
+    {% else %}
+    <div class="background-video__fallback-img">
+      {%- render 'responsive-image', input_sizes: "160x0,320x0", image: fallback_image -%}
+    </div>
+    {% endif %}
   {%- endif -%}
   <div class="background-video__iframe" data-provider="{{ video.type }}">
     {%- if video_hosted == blank -%}
