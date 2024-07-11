@@ -160,7 +160,7 @@
             "datePublished": {{ article.published_at | date: '%Y-%m-%d' | json }},
             "image": {
               "@type": "ImageObject",
-              "url": {{ article.image | img_url: 'large' | json }}
+              "url": {{ article.image | img_url: 'large' | prepend : "https:" | json }}
             },
             "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
             "url": {{ article.url | prepend: shop.url  | json }}
