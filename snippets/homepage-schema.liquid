@@ -110,8 +110,8 @@
               "@type": "Product",
               "name": {{ product.title | json }},
               "description": {{ product.description | strip_html | truncatewords: 30 | json }},
-              "image": {{ product.featured_image | img_url: 'large' | prepend: "https:" }},
-              "url": {{ product.url | prepend: shop.url }},
+              "image": "{{ product.featured_image | img_url: 'large' | prepend: "https:" }}",
+              "url": "{{ product.url | prepend: shop.url }}",
               "offers": {
                 "@type": "Offer",
                 "price": {{ product.price | money_without_currency | remove: ',' | json }},
@@ -160,10 +160,10 @@
             "datePublished": {{ article.published_at | date: '%Y-%m-%d' | json }},
             "image": {
               "@type": "ImageObject",
-              "url": {{ article.image | img_url: 'large' | prepend : "https:" }}
+              "url": "{{ article.image | img_url: 'large' | prepend : 'https:' }}"
             },
             "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
-            "url": {{ article.url | prepend: shop.url }}
+            "url": "{{ article.url | prepend: shop.url }}"
           }{% unless forloop.last %},{% endunless %}
           {%- endfor -%}
         ]
