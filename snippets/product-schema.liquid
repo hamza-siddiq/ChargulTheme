@@ -89,25 +89,15 @@
         },
         {
           "@type": "PropertyValue",
+          "name": "Type",
+          "value": "Afghan Rug"
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Dimensions",
-          "value": "{{ product.selected_or_first_available_variant.option1 }}"
+          "value": "{{ product.metafields.custom.dimensions}}"
         }
       ],
-      "width": {
-        "@type": "QuantitativeValue",
-        "value": "{{ product.selected_or_first_available_variant.width }}",
-        "unitCode": "CMT"
-      },
-      "height": {
-        "@type": "QuantitativeValue",
-        "value": "{{ product.selected_or_first_available_variant.height }}",
-        "unitCode": "CMT"
-      },
-      "weight": {
-        "@type": "QuantitativeValue",
-        "value": "{{ product.selected_or_first_available_variant.weight }}",
-        "unitCode": "KGM"
-      }
     }
   }
   </script>
