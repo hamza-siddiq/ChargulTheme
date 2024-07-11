@@ -27,9 +27,7 @@
       "@id": "{{ article.url | absolute_url }}#article",
       "headline": "{{ article.title | escape }}",
       "image": [
-        "{{ article.image | img_url: 'master' }}",
-        "{{ article.image | img_url: '1200x' }}",
-        "{{ article.image | img_url: '600x' }}"
+        "{{ article.image | img_url: 'master' }}"
       ],
       "author": {
         "@type": "Person",
