@@ -5,7 +5,7 @@
     "mainEntity": {
       "@type": "Product",
       "@id": "{{ shop.url }}{{ product.url }}#product",
-      "name": "{{ product.title }}",
+      "name": {{ product.title | json }},
       "image": [
         {% for image in product.images %}
           "https:{{ image.src | img_url: 'master' }}" {% unless forloop.last %},{% endunless %}
@@ -66,7 +66,7 @@
     ],
     "about": {
       "@type": "Product",
-      "name": "{{ product.title }}",
+      "name": {{ product.title | json }},
       "image": [
         {% for image in product.images %}
           "https:{{ image.src | img_url: 'master' }}" {% unless forloop.last %},{% endunless %}
