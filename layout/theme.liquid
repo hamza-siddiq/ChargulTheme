@@ -132,7 +132,6 @@
 			  const boomerangScript = document.getElementById('boomr-if-as');
 			  if (boomerangScript) {
 				boomerangScript.remove();
-				console.log('Removed Boomerang script');
 			  }
 			}
 		  
@@ -158,7 +157,6 @@
 			const originalAppendChild = Element.prototype.appendChild;
 			Element.prototype.appendChild = function(child) {
 			  if (child.id === 'boomr-if-as' || (child.src && child.src.includes('boomerang'))) {
-				console.log('Blocked Boomerang script insertion');
 				return child; // Return the child without actually appending it
 			  }
 			  return originalAppendChild.call(this, child);
@@ -168,7 +166,6 @@
 			const originalInsertBefore = Element.prototype.insertBefore;
 			Element.prototype.insertBefore = function(newNode, referenceNode) {
 			  if (newNode.id === 'boomr-if-as' || (newNode.src && newNode.src.includes('boomerang'))) {
-				console.log('Blocked Boomerang script insertion');
 				return newNode; // Return the newNode without actually inserting it
 			  }
 			  return originalInsertBefore.call(this, newNode, referenceNode);
