@@ -81,10 +81,20 @@
 						"unitCode": "DAY"
 					  }
 					}
+				},
+				"hasMerchantReturnPolicy": {
+					"@type": "MerchantReturnPolicy",
+					"applicableCountry": "US",
+					"returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+					"merchantReturnDays": "30",
+					"returnMethod": "https://schema.org/ReturnByMail",
+					"returnFees": "https://schema.org/FreeReturn",
+					"refundType": "https://schema.org/FullRefund",
+					"description": "We offer a 30-day return policy for a full refund, provided the item is in its original condition. Once we receive the returned rug, we process refunds within 5 business days. We also offer a 30-day exchange policy if you prefer a different rug."
+				  }
 				}
 			  }
-			}
-		  }{% unless forloop.last %},{% endunless %}
+		    }{% unless forloop.last %},{% endunless %}
 		  {% endfor %}
 		]
 	  },
