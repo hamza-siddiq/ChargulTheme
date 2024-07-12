@@ -12,7 +12,7 @@
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": {{ shop.secure_url | append: "/search?type=product&q={search_term_string}" | json }}
+          "urlTemplate": "https://www.chargul.com/search?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }
@@ -21,4 +21,4 @@
       "https://www.instagram.com/chargul"
     ]
   }
-  </script>
+</script>
