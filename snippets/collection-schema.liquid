@@ -47,7 +47,41 @@
 				"@type": "Offer",
 				"price": "{{ product.price | money_without_currency | remove: ',' }}",
 				"priceCurrency": "{{ shop.currency }}",
-				"availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}"
+				"availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+				"priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' }}",
+				"shippingDetails": {
+					"@type": "OfferShippingDetails",
+					"shippingRate": {
+					  "@type": "MonetaryAmount",
+					  "value": "0",
+					  "currency": "USD"
+					},
+					"shippingDestination": {
+					  "@type": "DefinedRegion",
+					  "addressCountry": "US"
+					},
+					"deliveryTime": {
+					  "@type": "ShippingDeliveryTime",
+					  "businessDays": {
+						"@type": "OpeningHoursSpecification",
+						"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+						"opens": "09:00",
+						"closes": "17:00"
+					  },
+					  "handlingTime": {
+						"@type": "QuantitativeValue",
+						"minValue": "0",
+						"maxValue": "1",
+						"unitCode": "DAY"
+					  },
+					  "transitTime": {
+						"@type": "QuantitativeValue",
+						"minValue": "3",
+						"maxValue": "5",
+						"unitCode": "DAY"
+					  }
+					}
+				}
 			  }
 			}
 		  }{% unless forloop.last %},{% endunless %}
