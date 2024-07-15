@@ -21,6 +21,7 @@
 		assign priority = priority
 	else
 		assign priority = 'lazy'
+	endif
 -%}
 {%- if article -%}
 <div class="blog-post {% if use_shapes %}blog-post-shape-{{ index }}{% endif -%}">
