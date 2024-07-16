@@ -32,7 +32,7 @@
             {% endif %}
             {% if block.type == 'content' %}
               <div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
-                {{ article.content | replace: '<h2', '<h2 class="h5"' | replace: '<h3>', "<h3 style='font-size: calc(var(--font-heading-scale) * 16px); display:inline; line-height: 1.7; font-family: Chivo, sans-serif; margin-bottom: 0px;'>" 
+                {{ article.content | replace: '<h2', '<h2 class="h5"' | replace: '<h3>', "<h3 style='font-size: calc(var(--font-heading-scale) * 17px); display:inline; line-height: 1.7; font-family: Chivo, sans-serif; margin-bottom: 0px;'>" 
         | replace: '</h3>', '</h3>' 
           }}
               </div>
